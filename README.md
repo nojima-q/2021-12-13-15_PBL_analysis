@@ -4,4 +4,7 @@
 ## NCBI SRA (https://www.ncbi.nlm.nih.gov/sra)
 <img width="1190" alt="スクリーンショット 2021-12-01 14 22 50" src="https://user-images.githubusercontent.com/85273234/144176897-1c463d7f-ca18-41cf-979e-b70fb2db9f0e.png">
 
-## DDBJ Sequence Read Archive
+## DDBJ Sequence Read Archive (https://www.ddbj.nig.ac.jp/dra/index.html)
+<img width="1792" alt="スクリーンショット 2021-12-01 14 23 16" src="https://user-images.githubusercontent.com/85273234/144177226-15d63718-b705-4f71-b103-dc84aa997a14.png">
+
+## EBI ENA (https://www.ebi.ac.uk/ena/browser/home)
