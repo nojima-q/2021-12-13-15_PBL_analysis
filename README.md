@@ -13,9 +13,9 @@
 ### ※データ検索は、スクリーン上で実演します。
 
 ### 1-2 データ取得方法
-１．解析したデータセットのアクセッションナンバーをNCBI SRA Run Selectorに入力し、『Search』をクリック。
+１．解析したデータセットのAccession numberをNCBI SRA Run Selectorに入力し、『Search』をクリック。
 <img width="1792" alt="スクリーンショット 2021-12-01 15 13 56" src="https://user-images.githubusercontent.com/85273234/144181792-1ac601bf-88d8-472e-a30f-d554e3b7d5a1.png">
-２．データセット内の全てのデータを解析する場合は、Total行の『Accetion List』をクリックし、サンプルごとのアクセッションナンバーが記載されたテキストファイル（SRR_Acc_List.txt）をダウンロードする。一部のデータのみ解析する場合は、必要なデータに☑をいれSelected行の『Accetion List』をクリックし、SRR_Acc_List.txtをダウンロードする。
+２．データセット内の全てのデータを解析する場合は、Total行の『Accession List』をクリックし、サンプルごとのAccession numberが記載されたテキストファイル（SRR_Acc_List.txt）をダウンロードする。一部のデータのみ解析する場合は、必要なデータに☑をいれSelected行の『Accession List』をクリックし、SRR_Acc_List.txtをダウンロードする。
 <img width="1792" alt="スクリーンショット 2021-12-01 15 19 26" src="https://user-images.githubusercontent.com/85273234/144182595-94ed6341-7722-4efb-8eec-5891f67ca4ae.png">
 SRR_Acc_List.txtの内容\
 <img width="201" alt="スクリーンショット 2021-12-01 15 24 07" src="https://user-images.githubusercontent.com/85273234/144183038-7209d17e-546a-43a9-8216-0f85d0b5d0b1.png">
