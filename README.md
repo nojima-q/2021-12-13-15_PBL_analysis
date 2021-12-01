@@ -32,3 +32,17 @@ $ find . -name '*.sra' -exec fastq-dump --gzip --split-files --outdir ./PATH {} 
 ```
 
 ### 2 FASTQファイルの形式、クオリティーコントロールについて
+#### １．FASTQファイルとは
+@SRR8615662.1 1 length=101\
+TGATGGCCCTGCCTTCGTGGGAACAGAGGCTAAGGCCTTGAG\
++SRR8615662.1 1 length=101 CCCFFFFFHHHHHJJJJIJJJJIJIJJJJJJJJJJJJJJJJJFIIGIJJIJIJJIJJJJJHHHHHFFFFF\
+\
+１行目：＠から始まり、リードIDが記載されている\
+２行目：シーケンスしたリードの塩基配列\
+３行目：＋を記載\
+４行目：２行目に記述した各塩基のクオリティ値
+
+#### ２．FASTQファイルのクオリティーコントロール
+
+
+
