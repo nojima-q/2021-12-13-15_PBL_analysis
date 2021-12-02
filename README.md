@@ -1,4 +1,8 @@
 # がん研究会PBL　解析　〜Transcriptome解析〜
+## インストール
+・SRA Toolkit、Trimmomatic、HISAT2、featureCountsはbinary fileをダウンロードして下さい。コンパイルなしでパスを指定するだけで実行できます。\
+・FastQCはソースコードをダウンロードし、コンパイルすることでコマンド操作で実行できますし、アプリケーションとしても公開されています。
+
 ## 1-1 公共データベースの紹介
 ![20190605_metacore](https://user-images.githubusercontent.com/85273234/144177090-bbba1e07-08de-4acf-bf6f-b7395a1e104d.jpg)
 ### NCBI SRA (https://www.ncbi.nlm.nih.gov/sra)
@@ -43,6 +47,9 @@ TGATGGCCCTGCCTTCGTGGGAACAGAGGCTAAGGCCTTGAG\
 ４行目：２行目に記述した各塩基のクオリティ値
 
 #### ２．FASTQファイルのクオリティーコントロール
-
-
+FastQCを使って、FASTQファイルの品質を確認します。\
+端末から行う場合、下記のコマンドを実行します。
+```
+~/FastQC/fastqc -t 40 -o ~/fastqc_results/ .fastq.gz
+```
 
