@@ -3,6 +3,9 @@
 ・SRA Toolkit、Trimmomatic、HISAT2、featureCountsはbinary fileをダウンロードして下さい。コンパイルなしでパスを指定するだけで実行できます。\
 ・FastQCはソースコードをダウンロードし、コンパイルすることでコマンド操作で実行できます。またアプリケーションとしても公開されています。
 
+## インストール
+使用データ
+
 ## 1-1 公共データベースの紹介
 ![20190605_metacore](https://user-images.githubusercontent.com/85273234/144177090-bbba1e07-08de-4acf-bf6f-b7395a1e104d.jpg)
 ### NCBI SRA (https://www.ncbi.nlm.nih.gov/sra)
