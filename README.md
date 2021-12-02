@@ -9,7 +9,7 @@
 [sample1_1_100K.fastq.gz](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/blob/main/sample1_1_100K.fastq.gz)\
 [sample1_2_100K.fastq.gz](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/blob/main/sample1_2_100K.fastq.gz)\
 [sample2_1_100K.fastq.gz](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/blob/main/sample2_1_100K.fastq.gz)\
-[sample2_1_100K.fastq.gz](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/blob/main/sample2_2_100K.fastq.gz)
+[sample2_2_100K.fastq.gz](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/blob/main/sample2_2_100K.fastq.gz)
 
 
 上記のリンクから下記のページに移動し、『Download』(赤枠)をクリックするとダウンロードすることができます。
