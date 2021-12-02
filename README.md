@@ -52,6 +52,6 @@ FastQCを使って、FASTQファイルの品質を確認します。\
 ```
 ~/FastQC/fastqc -t 40 -o ~/fastqc_results/ ~/sample1_1_100K.fastq.gz
 ```
--t：スレッド数（使用するPC環境に合わせて設定して下さい。）
+-t：スレッド数（使用するPC環境に合わせて設定して下さい。）\
 -o：出力ディレクトリ
 
