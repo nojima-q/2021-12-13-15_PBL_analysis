@@ -25,7 +25,7 @@
 
 ### ※データ検索は、スクリーン上で実演します。
 
-### 1-2 データ取得方法
+## 1-2 データ取得方法
 １．解析したデータセットのAccession numberをNCBI SRA Run Selectorに入力し、『Search』をクリック。
 <img width="1792" alt="スクリーンショット 2021-12-01 15 13 56" src="https://user-images.githubusercontent.com/85273234/144181792-1ac601bf-88d8-472e-a30f-d554e3b7d5a1.png">
 ２．データセット内の全てのデータを解析する場合は、Total行の『Accession List』をクリックし、サンプルごとのAccession numberが記載されたテキストファイル（SRR_Acc_List.txt）をダウンロードする。一部のデータのみ解析する場合は、必要なデータに☑をいれSelected行の『Accession List』をクリックし、SRR_Acc_List.txtをダウンロードする。
@@ -44,8 +44,8 @@ $ find . -name '*.sra' -exec fastq-dump --gzip --split-files --outdir ./PATH {} 
 --gzip：圧縮ファイルとして出力する\
 --split-files：レイアウトがpaired-endの際に指定する。single-endのときは不要。
 
-### 2 FASTQファイルの形式、クオリティーコントロールについて
-#### １．FASTQファイルとは
+## 2 FASTQファイルの形式、クオリティーコントロールについて
+### １．FASTQファイルとは
 @SRR8615662.1 1 length=101\
 TGATGGCCCTGCCTTCGTGGGAACAGAGGCTAAGGCCTTGAG\
 +SRR8615662.1 1 length=101\
@@ -56,7 +56,7 @@ CCCFFFFFHHHHHJJJJIJJJJIJIJJJJJJJJJJJJJJJJJFIIGIJJIJIJJIJJJJJHHHHHFFFFF\
 ３行目：＋を記載\
 ４行目：２行目に記述した各塩基のクオリティ値
 
-#### ２．FASTQファイルのクオリティーコントロール
+### ２．FASTQファイルのクオリティーコントロール
 FastQCを使って、FASTQファイルの品質を確認します。\
 端末から行う場合、下記のコマンドを実行します。
 ```
@@ -69,31 +69,31 @@ FastQCを使って、FASTQファイルの品質を確認します。\
 複数ファイル指定することで、バッチ処理が可能です。
 <img width="912" alt="スクリーンショット 2021-12-02 17 19 34" src="https://user-images.githubusercontent.com/85273234/144384259-16f77dc6-b572-4e5e-b865-31aa4e7429d0.png">
 
-#### ３．FastQC解析結果
-##### Per base sequence quality
+### ３．FastQC解析結果
+#### Per base sequence quality
 リードの各塩基のクオリティスコアを示しています。 Phred quality scoreがだいたいグリーンの領域（Scoreが28以上）に収まっているかどうか確認します。 結果として、クオリティが低いリードは含まれていないことが確認できます。\
 <img width="882" alt="スクリーンショット 2021-12-03 12 19 30" src="https://user-images.githubusercontent.com/85273234/144539782-0ec533eb-3533-4e1a-94f6-7b25533e3463.png">
 
-##### Per tile sequence quality
+#### Per tile sequence quality
 <img width="883" alt="スクリーンショット 2021-12-03 12 19 40" src="https://user-images.githubusercontent.com/85273234/144539828-47dd135b-650c-46ea-9c12-0467566b7cbf.png">
 
-##### Per sequence quality scores
+#### Per sequence quality scores
 <img width="854" alt="スクリーンショット 2021-12-03 12 19 59" src="https://user-images.githubusercontent.com/85273234/144539876-2bb62a89-aed8-486b-892c-212b3e9943c9.png">
 
-##### Per base sequence content
+#### Per base sequence content
 <img width="882" alt="スクリーンショット 2021-12-03 12 20 10" src="https://user-images.githubusercontent.com/85273234/144539910-8ddb14a5-cba5-4ae3-bcb1-efe42fe7320f.png">
 
-##### Per sequence GC content
+#### Per sequence GC content
 <img width="861" alt="スクリーンショット 2021-12-03 12 20 18" src="https://user-images.githubusercontent.com/85273234/144539949-a255551b-f00c-4c80-907c-b5c93767308a.png">
 
-##### Per base N content
+#### Per base N content
 <img width="880" alt="スクリーンショット 2021-12-03 12 20 28" src="https://user-images.githubusercontent.com/85273234/144540515-9f9c67a5-b570-4262-8097-4d8f36ab8279.png">
 
-##### Sequence Length Distribution
+#### Sequence Length Distribution
 <img width="855" alt="スクリーンショット 2021-12-03 12 20 37" src="https://user-images.githubusercontent.com/85273234/144540533-0a74b05a-fc62-4892-aad9-50443deeed4c.png">
 
-##### Sequence Duplication Levels
+#### Sequence Duplication Levels
 <img width="855" alt="スクリーンショット 2021-12-03 12 20 37" src="https://user-images.githubusercontent.com/85273234/144540533-0a74b05a-fc62-4892-aad9-50443deeed4c.png">
 
-##### Overrepresented sequences・Adapter Content
+#### Overrepresented sequences・Adapter Content
 <img width="864" alt="スクリーンショット 2021-12-03 12 21 07" src="https://user-images.githubusercontent.com/85273234/144540575-b42c14b4-46bc-4716-9df9-e15acc3674e5.png">
