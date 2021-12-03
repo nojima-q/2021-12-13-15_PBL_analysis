@@ -75,25 +75,38 @@ FastQCを使って、FASTQファイルの品質を確認します。\
 <img width="882" alt="スクリーンショット 2021-12-03 12 19 30" src="https://user-images.githubusercontent.com/85273234/144539782-0ec533eb-3533-4e1a-94f6-7b25533e3463.png">
 
 #### Per tile sequence quality
+フローセルの各タイルごとのクオリティスコアを示しています。\
+Illumina社製の次世代シーケンサーでは、「フローセル」と呼ばれるガラス基板上でDNA合成反応を行います。このフローセルは「タイル」と呼ばれる単位に区切られており、各タイルごとに塩基配列を決定しています。\
+シーケンスをかけたときに、例えば特定のタイルに気泡やゴミが入っているとクオリティの低下が見られることがあります。\
+特定のタイルで著しいクオリティの低下が見られる場合は、シークエンス時に上記のような問題があったと考えられます。
+
 <img width="883" alt="スクリーンショット 2021-12-03 12 19 40" src="https://user-images.githubusercontent.com/85273234/144539828-47dd135b-650c-46ea-9c12-0467566b7cbf.png">
 
 #### Per sequence quality scores
+各リードの全長のクオリティスコアの分布を示しています。 
 <img width="854" alt="スクリーンショット 2021-12-03 12 19 59" src="https://user-images.githubusercontent.com/85273234/144539876-2bb62a89-aed8-486b-892c-212b3e9943c9.png">
 
 #### Per base sequence content
+各塩基のA, T, G, Cの含有量を示しています。 RNA-seqの場合、それぞれの含有量はほぼ25%ずつになりますが、PAR-CLIPのようにRNA結合タンパク質と結合しているRNA配列を抽出してきている場合、それぞれの含有率に偏りが見られます。
 <img width="882" alt="スクリーンショット 2021-12-03 12 20 10" src="https://user-images.githubusercontent.com/85273234/144539910-8ddb14a5-cba5-4ae3-bcb1-efe42fe7320f.png">
 
 #### Per sequence GC content
+リードのGC contentsの分布を示しています。 
 <img width="861" alt="スクリーンショット 2021-12-03 12 20 18" src="https://user-images.githubusercontent.com/85273234/144539949-a255551b-f00c-4c80-907c-b5c93767308a.png">
 
 #### Per base N content
+各塩基中に含まれるNの含有率（塩基を読めなかった箇所）を示しています。 
 <img width="880" alt="スクリーンショット 2021-12-03 12 20 28" src="https://user-images.githubusercontent.com/85273234/144540515-9f9c67a5-b570-4262-8097-4d8f36ab8279.png">
 
 #### Sequence Length Distribution
+リード長の分布を示しています。 
 <img width="855" alt="スクリーンショット 2021-12-03 12 20 37" src="https://user-images.githubusercontent.com/85273234/144540533-0a74b05a-fc62-4892-aad9-50443deeed4c.png">
 
 #### Sequence Duplication Levels
+Duplidate readsの含まれている数を示しています。 
 <img width="855" alt="スクリーンショット 2021-12-03 12 20 37" src="https://user-images.githubusercontent.com/85273234/144540533-0a74b05a-fc62-4892-aad9-50443deeed4c.png">
 
 #### Overrepresented sequences・Adapter Content
+頻出する特徴配列が示されています。リード中にアダプター配列などが混入している場合、その配列が示されます。\
+各塩基ごとに見たときのリード中に含まれているアダプターの割合を示しています。 あくまで、FastQCに登録されているアダプター配列しか確認していないので、登録されていないアダプター配列を使っていた場合、そのアダプター配列がリード中に混入していても確認できないことがあります。 
 <img width="864" alt="スクリーンショット 2021-12-03 12 21 07" src="https://user-images.githubusercontent.com/85273234/144540575-b42c14b4-46bc-4716-9df9-e15acc3674e5.png">
