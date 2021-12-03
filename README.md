@@ -38,11 +38,11 @@ SRA Toolkitの```prefetch```、```fastq-dump```を使ってデータを取得す
 $ prefetch  --option-file ~/Downloads/SRR_Acc_list.txt
 ```
 次に```fastq-dump```でsraファイルからfastqファイルを取得する。PATHにfastqファイルを格納したいディレクトリのパスを記載。\
---gzip：圧縮ファイルとして出力する\
---split-files：レイアウトがpaired-endの際に指定する。single-endのときは不要。
 ```
 $ find . -name '*.sra' -exec fastq-dump --gzip --split-files --outdir ./PATH {} \;
 ```
+--gzip：圧縮ファイルとして出力する\
+--split-files：レイアウトがpaired-endの際に指定する。single-endのときは不要。
 
 ### 2 FASTQファイルの形式、クオリティーコントロールについて
 #### １．FASTQファイルとは
