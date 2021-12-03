@@ -69,3 +69,5 @@ FastQCを使って、FASTQファイルの品質を確認します。\
 複数ファイル指定することで、バッチ処理が可能です。
 <img width="912" alt="スクリーンショット 2021-12-02 17 19 34" src="https://user-images.githubusercontent.com/85273234/144384259-16f77dc6-b572-4e5e-b865-31aa4e7429d0.png">
 
+#### ３．FastQC解析結果
+##### Per base sequence quality
