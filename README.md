@@ -6,14 +6,11 @@
 ## 使用データ
 下記のpaired-endでシーケンスされた２サンプルのデータを使用します。\
 今回のPBL用に公共データから１サンプル１０万リードランダムサンプリングしたものです。\
+ダウンロードして作業ディレクトリに保存して下さい。
 [sample1_1_100K.fastq.gz](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/sample1_1_100K.fastq.gz)\
 [sample1_2_100K.fastq.gz](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/sample1_2_100K.fastq.gz)\
 [sample2_1_100K.fastq.gz](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/sample2_1_100K.fastq.gz)\
 [sample2_2_100K.fastq.gz](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/sample2_2_100K.fastq.gz)
-
-
-上記のリンクから下記のページに移動し、『Download』(赤枠)をクリックするとダウンロードすることができます。
-<img width="1792" alt="スクリーンショット 2021-12-02 22 32 41" src="https://user-images.githubusercontent.com/85273234/144432809-a9443eb7-321a-4052-9c81-475576018834.png">
 
 ## 1-1 公共データベースの紹介
 ![20190605_metacore](https://user-images.githubusercontent.com/85273234/144177090-bbba1e07-08de-4acf-bf6f-b7395a1e104d.jpg)
