@@ -6,7 +6,7 @@
 ## 使用データ
 下記のpaired-endでシーケンスされた２サンプルのデータを使用します。\
 今回のPBL用に公共データから１サンプル１０万リードランダムサンプリングしたものです。\
-ダウンロードして作業ディレクトリに保存して下さい。
+ダウンロードして作業ディレクトリに保存して下さい。\
 [sample1_1_100K.fastq.gz](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/sample1_1_100K.fastq.gz)\
 [sample1_2_100K.fastq.gz](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/sample1_2_100K.fastq.gz)\
 [sample2_1_100K.fastq.gz](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/sample2_1_100K.fastq.gz)\
