@@ -107,7 +107,10 @@ Duplidate readsの含まれている数を示しています。
 <img width="855" alt="スクリーンショット 2021-12-03 12 20 37" src="https://user-images.githubusercontent.com/85273234/144540533-0a74b05a-fc62-4892-aad9-50443deeed4c.png">
 
 #### Overrepresented sequences
-頻出する特徴配列が示されています。リード中にアダプター配列などが混入している場合、その配列が示されます。\
+頻出する特徴配列が示されています。リード中にアダプター配列などが混入している場合、その配列が示されます。
+<img width="1502" alt="スクリーンショット 2021-12-03 13 15 42" src="https://user-images.githubusercontent.com/85273234/144544356-12a834e8-d11f-4e0e-820d-dbdb3e192c09.png">
+
 #### Adapter Content
 各塩基ごとに見たときのリード中に含まれているアダプターの割合を示しています。 あくまで、FastQCに登録されているアダプター配列しか確認していないので、登録されていないアダプター配列を使っていた場合、そのアダプター配列がリード中に混入していても確認できないことがあります。 
-<img width="864" alt="スクリーンショット 2021-12-03 12 21 07" src="https://user-images.githubusercontent.com/85273234/144540575-b42c14b4-46bc-4716-9df9-e15acc3674e5.png">
+<img width="898" alt="スクリーンショット 2021-12-03 13 15 53" src="https://user-images.githubusercontent.com/85273234/144544371-74ddb7ed-97d1-4ffa-b934-50ef78ebd7e5.png">
+
