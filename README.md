@@ -216,5 +216,4 @@ Duplidate readsの含まれている数を示しています。
 上記の２ファイルも使って、インデックス化します。
 ```
 ~/hisat2-2.2.1/hisat2-build -p 18 --ss ./Homo_sapiens.GRCh38.104.ss --exon ./Homo_sapiens.GRCh38.104.exon ./Homo_sapiens.GRCh38.dna.primary_assembly.fa ./GRCh38.104
-
 ```
