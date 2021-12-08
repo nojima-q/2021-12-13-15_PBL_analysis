@@ -198,8 +198,8 @@ Duplidate readsの含まれている数を示しています。
 <img width="1792" alt="スクリーンショット 2021-12-08 14 21 31" src="https://user-images.githubusercontent.com/85273234/145152855-ee648e1f-ae56-4e90-9a53-681ee6f0b079.png">
 - まずはEnsemblトップページの『Human』からをクリックします・
 - 次のページの右側『Gene annotation』内の『Download FASTA』をクリック。\
-ftpサイトの『dna』をクリックすると複数のファイルが閲覧できます。このうち、『Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz』を使用します。\
-次はアノテーションファイルをダウンロードします。\
-Humanトップページの『Gene annotation』内の『Download GTF』をクリック。\
-ftpサイトの『Homo_sapiens.GRCh38.104.gtf.gz』をダウンロードします。
+- ftpサイトの『dna』をクリックすると複数のファイルが閲覧できます。このうち、『Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz』を使用します。\
+- 次はアノテーションファイルをダウンロードします。\
+- Humanトップページの『Gene annotation』内の『Download GTF』をクリック。\
+- ftpサイトの『Homo_sapiens.GRCh38.104.gtf.gz』をダウンロードします。
 
