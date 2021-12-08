@@ -196,8 +196,8 @@ Duplidate readsの含まれている数を示しています。
 [Ensembl](https://www.ensembl.org/)は、様々な生物種のゲノム配列情報が格納されているデータベースです。\
 今回は、ここからヒトのリファレンスゲノムファイルとアノテーションファイル（遺伝子ごとにコードされている染色体と染色体内でのポジションが記載されたファイル）をダウンロードします。\
 <img width="1792" alt="スクリーンショット 2021-12-08 14 21 31" src="https://user-images.githubusercontent.com/85273234/145152855-ee648e1f-ae56-4e90-9a53-681ee6f0b079.png">
-まずはEnsemblトップページの『Human』からをクリックします。\
-次のページの右側『Gene annotation』内の『Download FASTA』をクリック。\
+- まずはEnsemblトップページの『Human』からをクリックします・
+- 次のページの右側『Gene annotation』内の『Download FASTA』をクリック。\
 ftpサイトの『dna』をクリックすると複数のファイルが閲覧できます。このうち、『Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz』を使用します。\
 次はアノテーションファイルをダウンロードします。\
 Humanトップページの『Gene annotation』内の『Download GTF』をクリック。\
