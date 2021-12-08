@@ -43,8 +43,8 @@ $ prefetch  --option-file ~/Downloads/SRR_Acc_list.txt
 ```
 $ find . -name '*.sra' -exec fastq-dump --gzip --split-files --outdir ./PATH {} \;
 ```
---gzip：圧縮ファイルとして出力する\
---split-files：レイアウトがpaired-endの際に指定する。single-endのときは不要。
+- --gzip：圧縮ファイルとして出力する
+- --split-files：レイアウトがpaired-endの際に指定する。single-endのときは不要。
 
 ## 2 FASTQファイルの形式、クオリティーコントロールについて
 ### １．FASTQファイルとは
@@ -65,8 +65,8 @@ FastQCを使って、FASTQファイルの品質を確認します。\
 mkdir ~/fastqc_results
 ~/FastQC/fastqc -t 40 -o ~/fastqc_results/ ~/sample1_1_100K.fastq.gz
 ```
--t：スレッド数（使用するPC環境に合わせて設定して下さい。）\
--o：出力ディレクトリ
+- -t：スレッド数（使用するPC環境に合わせて設定して下さい。）
+- -o：出力ディレクトリ
 
 アプリケーション版を使用する場合は、File>Openでファイルを指定し実行して下さい。\
 複数ファイル指定することで、バッチ処理が可能です。
@@ -107,7 +107,7 @@ Illumina社製の次世代シーケンサーでは、「フローセル」と呼
 
 #### Sequence Duplication Levels
 Duplidate readsの含まれている数を示しています。 
-<img width="855" alt="スクリーンショット 2021-12-03 12 20 37" src="https://user-images.githubusercontent.com/85273234/144540533-0a74b05a-fc62-4892-aad9-50443deeed4c.png">
+<img width="858" alt="スクリーンショット 2021-12-03 12 20 48" src="https://user-images.githubusercontent.com/85273234/144540550-89d8a421-a93c-4a71-96c0-66b0d764af24.png">
 
 #### Overrepresented sequences
 頻出する特徴配列が示されています。リード中にアダプター配列などが混入している場合、その配列が示されます。
@@ -131,11 +131,20 @@ java -jar ~/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 4 -phred33\
 ./sample1_2_100K_trim_unpaired.fastq.gz\ #処理後FowardリードとペアでないReverseリード
 ILLUMINACLIP:Truseq_stranded_totalRNA_adapter.fa:2:30:10 LEADING:20 TRAILING:20 SLIDINGWINDOW:4:20 MINLEN:25 #トリミング条件
 ```
+- PE：レイアウトがpaired-endシーケンスのときに指定。single-endの場合はSEを指定します。
+- -threads：スレッド数（使用するPC環境に合わせて設定して下さい。）
 - ILLUMINACLIP：Truseq_stranded_totalRNA_adapter.faはillumina社のTruSeqシリーズのアダプター配列をFASTA形式で記載してもの。後ろの数字は、許容ミスマッチ数:palindrome clip threshold:simple clip thresholdを表す。
 - LEADING：5'末端からスコアが 設定したスコア値未満の塩基をトリム
 - TRAILING：3'末端からスコアが 設定したスコア値未満の塩基をトリム
 - SLIDINGWINDOW：左の数字はウィンドウサイズ、右の数字は平均クオリティ値を表します。ウィンドウサイズの範囲内の塩基のスコア平均が設定値よりも低ければ、3'末端側の全ての塩基をトリム。\
 - MINLEN：設定値未満の塩基数になったリードを除去する。
+
+### awkコマンドを使ったバッチ処理
+サンプル数が多い場合一つ一つコマンドを打って処理するのは面倒です。その場合、下記のようにawkコマンドを使って複数サンプルのコマンドを１つのシェルファイルに記載してバッチ処理することができます。
+```
+ls sample*_100K.fastq.gz | cut -f1 -d_ | sort | uniq | awk '{printf ("java -jar ~/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 4 -phred33 %s_1_100K.fastq.gz %s_2_100K.fastq.gz %s_1_100K_trim_paired.fastq.gz %s_1_100K_trim_unpaired.fastq.gz %s_2_100K_trim_paired.fastq.gz %s_2_100K_trim_unpaired.fastq.gz ILLUMINACLIP:Truseq_stranded_totalRNA_adapter.fa:2:30:10 LEADING:20 TRAILING:20 SLIDINGWINDOW:4:20 MINLEN:25 > %s_trim.txt \n", $1, $1, $1, $1, $1, $1, $1)}' > trim.sh
+sh trim.sh
+```
 
 ### リードトリミング後のFastQC結果
 #### Per base sequence quality
