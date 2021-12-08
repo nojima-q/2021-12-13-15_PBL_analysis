@@ -226,10 +226,14 @@ Duplidate readsの含まれている数を示しています。
 ```
 ~/hisat2-2.1.0/hisat2 -p 40 --dta -x ./GRCh38.104 -1 ./sample1_1_trim_paired.fastq.gz -2 ./sample1_2_trim_paired.fastq.gz -S sample1_hisat2.sam 2> sample1_hisat2_log.txt
 ```
-- -p：
+- -p：スレッド数（使用するPC環境に合わせて設定して下さい。）
 - --dta：
-- -x：
-- -1：
-- -2：
-- -S：
-- 2>：
+- -x：インデックス化したリファレンスゲノムファイル
+- -1：FowardリードのFastqファイルを指定
+- -2：ReverseリードのFastqファイルを指定
+- -S：出力するSAMファイル名
+- 2>：標準エラー出力。Mapping rate等をテキストファイルとして出力する。
+
+※バッチ処理をする場合は前述のawkコマンドを使用して下さい。
+
+
