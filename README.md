@@ -116,3 +116,23 @@ Duplidate readsの含まれている数を示しています。
 各塩基ごとに見たときのリード中に含まれているアダプターの割合を示しています。 あくまで、FastQCに登録されているアダプター配列しか確認していないので、登録されていないアダプター配列を使っていた場合、そのアダプター配列がリード中に混入していても確認できないことがあります。 
 <img width="898" alt="スクリーンショット 2021-12-03 13 15 53" src="https://user-images.githubusercontent.com/85273234/144544371-74ddb7ed-97d1-4ffa-b934-50ef78ebd7e5.png">
 
+## 3 アダプターの除去およびリードのトリミング
+Trimmomaticを使って、アダプターの除去および低スコアな塩基のトリミングを同時に行います。
+アダプター配列を記載したFATSAファイルは下記よりダウンロードして下さい。（今回は、illumina社のTruSeqシリーズの配列を記載しています。自前データで実行する際は、ライブラリー作製キットで使用している配列が記載されたFASTAファイルを用意して実行して下さい。）\
+下記はpaired-endでシーケンスしたFASTQファイルの場合です。
+```
+java -jar ~/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 4 -phred33\
+./sample1_1_100K.fastq.gz\ #処理前Fowardリード
+./sample1_2_100K.fastq.gz\ #処理前Reverseリード
+./sample1_1_100K_trim_paired.fastq.gz\ #処理後ReverseリードとペアなFowardリード
+./sample1_1_100K_trim_unpaired.fastq.gz\ #処理後ReverseリードとペアでないFowardリード
+./sample1_2_100K_trim_paired.fastq.gz\ #処理後FowardリードとペアなReverseリード
+./sample1_2_100K_trim_unpaired.fastq.gz\ #処理後FowardリードとペアでないReverseリード
+ILLUMINACLIP:Truseq_stranded_totalRNA_adapter.fa:2:30:10 LEADING:20 TRAILING:20 SLIDINGWINDOW:4:20 MINLEN:25 #トリミング条件
+```
+ILLUMINACLIP：Truseq_stranded_totalRNA_adapter.faはillumina社のTruSeqシリーズのアダプター配列をFASTA形式で記載してもの。後ろの数字は、許容ミスマッチ数:palindrome clip threshold:simple clip thresholdを表す。
+LEADING：5'末端からスコアが 設定したスコア値未満の塩基をトリム
+TRAILING：3'末端からスコアが 設定したスコア値未満の塩基をトリム
+SLIDINGWINDOW：左の数字はウィンドウサイズ、右の数字は平均クオリティ値を表します。ウィンドウサイズの範囲内の塩基のスコア平均が設定値よりも低ければ、3'末端側の全ての塩基をトリム。
+MINLEN：設定値未満の塩基数になったリードを除去する。
+
