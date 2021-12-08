@@ -210,6 +210,11 @@ Duplidate readsの含まれている数を示しています。
 今回は、HISAT2に含まれる```hisat2-build```を使用します。\
 インデックス化する前段階として、まずは下記を実行します。それぞれスプライシングサイト、エキソンサイトを抽出するpythonスクリプトです。
 ```
-~/hisat2-2.2.1/extract_splice_sites.py ./Homo_sapiens.GRCh38.101.gtf > Homo_sapiens.GRCh38.101.ss
-~/hisat2-2.2.1/extract_exons.py ./Homo_sapiens.GRCh38.101.gtf > ./Homo_sapiens.GRCh38.101.exon 
+~/hisat2-2.2.1/extract_splice_sites.py ./Homo_sapiens.GRCh38.104.gtf > ./Homo_sapiens.GRCh38.104.ss
+~/hisat2-2.2.1/extract_exons.py ./Homo_sapiens.GRCh38.104.gtf > ./Homo_sapiens.GRCh38.104.exon 
+```
+上記の２ファイルも使って、インデックス化します。
+```
+~/hisat2-2.2.1/hisat2-build -p 18 --ss ./Homo_sapiens.GRCh38.104.ss --exon ./Homo_sapiens.GRCh38.104.exon ./Homo_sapiens.GRCh38.dna.primary_assembly.fa ./GRCh38.104
+
 ```
