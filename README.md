@@ -220,3 +220,16 @@ Duplidate readsの含まれている数を示しています。
 - -p：スレッド数（使用するPC環境に合わせて設定して下さい。）
 - -ss：extract_splice_sites.pyで作成したファイルを指定
 - -exon：extract_exons.pyで作成したファイルを指定
+
+### 5-2 マッピング
+いよいよマッピングを行います。今回は時間短縮のため、最初にダウンロードした１０万リードランダムサンプリングしたFASTQファイルを5-1で作成したインデックス化したリファレンスゲノムにマッピングします。
+```
+~/hisat2-2.1.0/hisat2 -p 40 --dta -x ./GRCh38.104 -1 ./sample1_1_trim_paired.fastq.gz -2 ./sample1_2_trim_paired.fastq.gz -S sample1_hisat2.sam 2> sample1_hisat2_log.txt
+```
+- -p：
+- --dta：
+- -x：
+- -1：
+- -2：
+- -S：
+- 2>：
