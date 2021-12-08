@@ -1,9 +1,9 @@
 # がん研究会PBL　解析　〜Transcriptome解析〜
 ## インストール
-・Unix
+- Unix\
 SRA Toolkit、Trimmomatic、HISAT2、featureCountsはbinary fileをダウンロードして下さい。コンパイルなしでパスを指定するだけで実行できます。\
 FastQCはソースコードをダウンロードし、コンパイルすることでコマンド操作で実行できます。またアプリケーションとしても公開されています。
-・Windows
+- Windows\
 Cygwinを利用する場合は、Trimmomaticの実行にJava、HISAT2の実行にPerlが必要です。それぞれインストールして下さい。
 ## 使用データ
 下記のpaired-endでシーケンスされた２サンプルのデータを使用します。\
@@ -194,5 +194,12 @@ Duplidate readsの含まれている数を示しています。
 ## 4 リファレンスゲノムファイル、アノテーションファイルの取得
 トリミングしたリードは全ゲノム配列が記載されたリファレンスゲノムファイルにマッピングします。\
 [Ensembl](https://www.ensembl.org/)は、様々な生物種のゲノム配列情報が格納されているデータベースです。\
-今回は、ここからヒトのリファレンスゲノムファイルとアノテーションファイル（遺伝子ごとにコードされている染色体と染色体内でのポジションが記載されたファイル）をダウンロードします。
+今回は、ここからヒトのリファレンスゲノムファイルとアノテーションファイル（遺伝子ごとにコードされている染色体と染色体内でのポジションが記載されたファイル）をダウンロードします。\
+<img width="1792" alt="スクリーンショット 2021-12-08 14 21 31" src="https://user-images.githubusercontent.com/85273234/145152855-ee648e1f-ae56-4e90-9a53-681ee6f0b079.png">
+まずはEnsemblトップページの『Human』からをクリックします。\
+次のページの右側『Gene annotation』内の『Download FASTA』をクリック。\
+ftpサイトの『dna』をクリックすると複数のファイルが閲覧できます。このうち、『Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz』を使用します。\
+次はアノテーションファイルをダウンロードします。\
+Humanトップページの『Gene annotation』内の『Download GTF』をクリック。\
+ftpサイトの『Homo_sapiens.GRCh38.104.gtf.gz』をダウンロードします。
 
