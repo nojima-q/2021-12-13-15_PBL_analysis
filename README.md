@@ -288,5 +288,19 @@ exonic_gene_sizes_2$ensembl_gene_id <- row.names(exonic_gene_sizes_2)
 ```
 exonic_gene_sizes_2 <- readRDS("~/exonic_gene_sizes_2_GRCh38.104.rds")
 ```
-
-
+カウントデータは、Transcript Per Million(TPM)値に変換します。TPMは、まずカウントデータを遺伝子長の長さで補正し、総リード数を100万リードにした値です。他にFPKMなどあり、こちらは先に総リード数を100万にしてから遺伝子長で補正します。したがって、最終的にサンプルごとに総リード数が異なることになるためサンプル間で比較する際はTPMの方が適しています。このような理由から最近ではTPM値を用いることが推奨されています。
+```
+gene.len <- exonic_gene_sizes_2$as.matrix.exonic_gene_sizes_2.
+names(gene.len) <- exonic_gene_sizes_2$ensembl_gene_id
+gene.list.order <- rownames(merge_combat)
+gene.len.sorted <- gene.len[gene.list.order]
+tpm <- function(count, gene.len) {
+  rate <- count / gene.len
+  rate / sum(rate) * 1e6
+}
+tpms <- apply(merge_combat, 2, function(x) tpm(count = x, gene.len = gene.len.sorted))
+```
+TPM値をlog2変換しますが、0の場合があるため、TPMに1を足して変換します。
+```
+tpms <- log2(tpms + 1)
+```
