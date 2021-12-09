@@ -241,13 +241,13 @@ Duplidate readsの含まれている数を示しています。
 マッピング結果であるSAMファイルからgeneごとまたはtranscriptごとにリードのカウント数を出力します。\
 カウントデータの出力には[Subread package](http://subread.sourceforge.net/)に含まれる```featureCounts```というプログラムを使用します。
 ```
-~/subread-2.0.1-MacOS-x86_64/bin/featureCounts -O -M -T 18 -p -t gene -g gene_id -a ./Homo_sapiens.GRCh38.104.gtf -o sample1_count.txt ./sample1_hisat2.sam
+~/subread-2.0.1-MacOS-x86_64/bin/featureCounts -O -M -T 18 -p -t exon -g gene_id -a ./Homo_sapiens.GRCh38.104.gtf -o sample1_count.txt ./sample1_hisat2.sam
 ```
-- -O：
-- -M：
+- -O：複数のfeatureで定義されている特定のゲノム領域にマッピングされたリードもカウントする
+- -M：マルチマッピングされたリードもカウントする
 - -T：スレッド数（使用するPC環境に合わせて設定して下さい。）
 - -p：paired-endの場合に指定（1リードペアを1カウントする。）
-- -t：
-- -g：
+- -t：GTFファイルのfeature領域（3カラム目、exon, gene, CDS等）を指定
+- -g：gene levelでカウントしたい場合は```gene_id```を、transcript levelでカウントしたい場合は```transcript_id```を指定する
 - -a：アノテーションファイル（GTFファイル等）を指定
 - -o：出力ファイル名を指定
