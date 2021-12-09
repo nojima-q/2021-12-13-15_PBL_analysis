@@ -309,7 +309,7 @@ data <- read.table("~/featureCounts_output.txt ", header = TRUE, row.names = 1, 
 ```
 tpms <- apply(data, 2, function(x) tpm(count = x, gene.len = gene.len.sorted))
 ```
-TPM値をlog2変換しますが、0の場合があるため、TPMに1を足して変換します。
+TPM値に1を足してlog2変換します。
 ```
 tpms <- log2(tpms + 1)
 ```
