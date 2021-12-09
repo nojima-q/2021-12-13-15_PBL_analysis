@@ -281,7 +281,7 @@ cut -f1,7- sample_count.txt | grep -v ^\# > featureCounts_output.txt
 ```
 library(GenomicFeatures)
 txdb <- makeTxDbFromGFF("~/index/Homo_sapiens.GRCh38.104.gtf", format = "gtf")
-exons_list_per_gene <- exonsBy(txdb, by = 'gene')
+exons_list_per_gene <- exonsBy(txdb, by = 'gene', use.names = TRUE) #featureCountsでtranscriptレベルでカウントした場合は、by引数の'gene'を'tx'に変更します。
 exonic_gene_sizes <- lapply(exons_list_per_gene, function(x){sum(width(reduce(x)))})
 exonic_gene_sizes_2 <- as.numeric(exonic_gene_sizes)
 names(exonic_gene_sizes_2) <- names(exonic_gene_sizes)
@@ -312,4 +312,6 @@ tpms <- apply(data, 2, function(x) tpm(count = x, gene.len = gene.len.sorted))
 TPM値をlog2変換しますが、0の場合があるため、TPMに1を足して変換します。
 ```
 tpms <- log2(tpms + 1)
+```
+カラム名がファイル名になっているため変更します。
 ```
