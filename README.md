@@ -272,7 +272,17 @@ Duplidate readsの含まれている数を示しています。
 
 ## 7 カウントデータをTPM値に変換する
 ここからは作業をRStudioに移します。\
+まずはGTFファイルからgene lengthを抽出します。
 ```
+library(GenomicFeatures)
+txdb <- makeTxDbFromGFF("~/index/Homo_sapiens.GRCh38.104.gtf", format = "gtf")
+exons_list_per_gene <- exonsBy(txdb, by = 'gene')
+exonic_gene_sizes <- lapply(exons_list_per_gene, function(x){sum(width(reduce(x)))})
+exonic_gene_sizes_2 <- as.numeric(exonic_gene_sizes)
+names(exonic_gene_sizes_2) <- names(exonic_gene_sizes)
+exonic_gene_sizes_2 <- data.frame(as.matrix(exonic_gene_sizes_2))
+exonic_gene_sizes_2$ensembl_gene_id <- row.names(exonic_gene_sizes_2)
 
 ```
+上記スクリプトの3行目は少し時間がかかるため、今回は事前に用意したファイルを読み込んで使用して下さい。
 
