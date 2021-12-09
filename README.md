@@ -287,18 +287,18 @@ data <- read.table("~/featureCounts_output.txt ", header = TRUE, row.names = 1, 
 library(GenomicFeatures)
 txdb <- makeTxDbFromGFF("~/Homo_sapiens.GRCh38.104.gtf", format = "gtf")
 exons_list_per_gene <- exonsBy(txdb, by = 'gene', use.names = FALSE) #featureCountsでtranscriptレベルでカウントした場合は、by引数の'gene'を'tx'に、use.names引数をTRUEに変更します。
-exonic_gene_sizes <- lapply(exons_list_per_gene, function(x){sum(width(reduce(x)))})
-exonic_gene_sizes_2 <- as.numeric(exonic_gene_sizes)
-names(exonic_gene_sizes_2) <- names(exonic_gene_sizes)
-exonic_gene_sizes_2 <- data.frame(as.matrix(exonic_gene_sizes_2))
-exonic_gene_sizes_2$ensembl_gene_id <- row.names(exonic_gene_sizes_2)
+exonic.gene.sizes <- lapply(exons_list_per_gene, function(x){sum(width(reduce(x)))})
+exonic.gene.sizes.2 <- as.numeric(exonic.gene.sizes)
+names(exonic.gene.sizes.2) <- names(exonic.gene.sizes)
+exonic.gene.sizes.2 <- data.frame(as.matrix(exonic.gene.sizes.2))
+exonic.gene.sizes.2$ensembl_gene_id <- row.names(exonic.gene.sizes.2)
 
 ```
 上記スクリプトの3行目は少し時間がかかるため、今回は下記の様に[事前に用意したファイル](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/exonic_gene_sizes_2_GRCh38.104.rds)を読み込んで使用して下さい。
 ```
-exonic_gene_sizes_2 <- readRDS("~/exonic_gene_sizes_2_GRCh38.104.rds")
-gene.len <- exonic_gene_sizes_2$as.matrix.exonic_gene_sizes_2.
-names(gene.len) <- exonic_gene_sizes_2$ensembl_gene_id
+eexonic.gene.sizes.2 <- readRDS("~/exonic_gene_sizes_2_GRCh38.104.rds")
+gene.len <- exonic.gene.sizes.2$as.matrix.exonic_gene_sizes_2.
+names(gene.len) <- exonic.gene.sizes.2$ensembl_gene_id
 gene.list.order <- rownames(data)
 gene.len.sorted <- gene.len[gene.list.order]
 tpm <- function(count, gene.len) {
