@@ -277,7 +277,12 @@ cut -f1,7- sample_count.txt | grep -v ^\# > featureCounts_output.txt
 
 ## 7 カウントデータをTPM値に変換する
 ここからは作業をRStudioに移します。\
-まずはGTFファイルからgene lengthを抽出します。
+featureCountsの出力ファイルからカウントデータを抽出したファイル```featureCounts_output.txt```を読み込みます。
+```
+data <- read.table("~/featureCounts_output.txt ", header = TRUE, row.names = 1, sep = "\t")
+```
+
+続いて、GTFファイルからgene lengthを抽出します。
 ```
 library(GenomicFeatures)
 txdb <- makeTxDbFromGFF("~/Homo_sapiens.GRCh38.104.gtf", format = "gtf")
@@ -294,16 +299,12 @@ exonic_gene_sizes_2$ensembl_gene_id <- row.names(exonic_gene_sizes_2)
 exonic_gene_sizes_2 <- readRDS("~/exonic_gene_sizes_2_GRCh38.104.rds")
 gene.len <- exonic_gene_sizes_2$as.matrix.exonic_gene_sizes_2.
 names(gene.len) <- exonic_gene_sizes_2$ensembl_gene_id
-gene.list.order <- rownames(merge_combat)
+gene.list.order <- rownames(data)
 gene.len.sorted <- gene.len[gene.list.order]
 tpm <- function(count, gene.len) {
   rate <- count / gene.len
   rate / sum(rate) * 1e6
 }
-```
-featureCountsの出力ファイルからカウントデータを抽出したファイル```featureCounts_output.txt```を読み込みます。
-```
-data <- read.table("~/featureCounts_output.txt ", header = TRUE, row.names = 1, sep = "\t")
 ```
 カウントデータは、Transcript Per Million(TPM)値に変換します。TPMは、まずカウントデータを遺伝子長の長さで補正し、総リード数を100万リードにした値です。他にFPKMなどあり、こちらは先に総リード数を100万にしてから遺伝子長で補正します。したがって、最終的にサンプルごとに総リード数が異なることになるためサンプル間で比較する際はTPMの方が適しています。このような理由から最近ではTPM値を用いることが推奨されています。
 ```
