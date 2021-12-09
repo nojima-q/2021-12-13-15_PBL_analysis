@@ -292,9 +292,6 @@ exonic_gene_sizes_2$ensembl_gene_id <- row.names(exonic_gene_sizes_2)
 上記スクリプトの3行目は少し時間がかかるため、今回は下記の様に[事前に用意したファイル](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/exonic_gene_sizes_2_GRCh38.104.rds)を読み込んで使用して下さい。
 ```
 exonic_gene_sizes_2 <- readRDS("~/exonic_gene_sizes_2_GRCh38.104.rds")
-```
-カウントデータは、Transcript Per Million(TPM)値に変換します。TPMは、まずカウントデータを遺伝子長の長さで補正し、総リード数を100万リードにした値です。他にFPKMなどあり、こちらは先に総リード数を100万にしてから遺伝子長で補正します。したがって、最終的にサンプルごとに総リード数が異なることになるためサンプル間で比較する際はTPMの方が適しています。このような理由から最近ではTPM値を用いることが推奨されています。
-```
 gene.len <- exonic_gene_sizes_2$as.matrix.exonic_gene_sizes_2.
 names(gene.len) <- exonic_gene_sizes_2$ensembl_gene_id
 gene.list.order <- rownames(merge_combat)
@@ -303,12 +300,14 @@ tpm <- function(count, gene.len) {
   rate <- count / gene.len
   rate / sum(rate) * 1e6
 }
-tpms <- apply(data, 2, function(x) tpm(count = x, gene.len = gene.len.sorted))
-
 ```
 featureCountsの出力ファイルからカウントデータを抽出したファイル```featureCounts_output.txt```を読み込みます。
 ```
 data <- read.table("~/featureCounts_output.txt ", header = TRUE, row.names = 1, sep = "\t")
+```
+カウントデータは、Transcript Per Million(TPM)値に変換します。TPMは、まずカウントデータを遺伝子長の長さで補正し、総リード数を100万リードにした値です。他にFPKMなどあり、こちらは先に総リード数を100万にしてから遺伝子長で補正します。したがって、最終的にサンプルごとに総リード数が異なることになるためサンプル間で比較する際はTPMの方が適しています。このような理由から最近ではTPM値を用いることが推奨されています。
+```
+tpms <- apply(data, 2, function(x) tpm(count = x, gene.len = gene.len.sorted))
 ```
 TPM値をlog2変換しますが、0の場合があるため、TPMに1を足して変換します。
 ```
