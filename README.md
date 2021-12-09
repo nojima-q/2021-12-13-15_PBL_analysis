@@ -280,7 +280,7 @@ cut -f1,7- sample_count.txt | grep -v ^\# > featureCounts_output.txt
 まずはGTFファイルからgene lengthを抽出します。
 ```
 library(GenomicFeatures)
-txdb <- makeTxDbFromGFF("~/index/Homo_sapiens.GRCh38.104.gtf", format = "gtf")
+txdb <- makeTxDbFromGFF("~/Homo_sapiens.GRCh38.104.gtf", format = "gtf")
 exons_list_per_gene <- exonsBy(txdb, by = 'gene', use.names = TRUE) #featureCountsでtranscriptレベルでカウントした場合は、by引数の'gene'を'tx'に変更します。
 exonic_gene_sizes <- lapply(exons_list_per_gene, function(x){sum(width(reduce(x)))})
 exonic_gene_sizes_2 <- as.numeric(exonic_gene_sizes)
