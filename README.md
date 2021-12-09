@@ -286,8 +286,8 @@ data <- read.table("~/featureCounts_output.txt ", header = TRUE, row.names = 1, 
 ```
 library(GenomicFeatures)
 txdb <- makeTxDbFromGFF("~/Homo_sapiens.GRCh38.104.gtf", format = "gtf")
-exons_list_per_gene <- exonsBy(txdb, by = 'gene', use.names = FALSE) #featureCountsでtranscriptレベルでカウントした場合は、by引数の'gene'を'tx'に、use.names引数をTRUEに変更します。
-exonic.gene.sizes <- lapply(exons_list_per_gene, function(x){sum(width(reduce(x)))})
+exons.list.per.gene <- exonsBy(txdb, by = 'gene', use.names = FALSE) #featureCountsでtranscriptレベルでカウントした場合は、by引数の'gene'を'tx'に、use.names引数をTRUEに変更します。
+exonic.gene.sizes <- lapply(exons.list.per.gene, function(x){sum(width(reduce(x)))})
 exonic.gene.sizes.2 <- as.numeric(exonic.gene.sizes)
 names(exonic.gene.sizes.2) <- names(exonic.gene.sizes)
 exonic.gene.sizes.2 <- data.frame(as.matrix(exonic.gene.sizes.2))
