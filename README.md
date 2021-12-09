@@ -5,6 +5,12 @@ SRA Toolkit、Trimmomatic、HISAT2、featureCountsはbinary fileをダウンロ�
 FastQCはソースコードをダウンロードし、コンパイルすることでコマンド操作で実行できます。またアプリケーションとしても公開されています。
 - Windows\
 Cygwinを利用する場合は、Trimmomaticの実行にJava、HISAT2の実行にPerlが必要です。それぞれインストールして下さい。
+- R & RStudio\
+Rのインストール\
+https://www.r-project.org/ からダウンロードして下さい。\
+RStudioのインストール\
+https://www.rstudio.com/products/rstudio/ からダウンロードして下さい。
+
 ## 使用データ
 下記のpaired-endでシーケンスされた２サンプルのデータを使用します。\
 今回のPBL用に公共データから１サンプル１０万リードランダムサンプリングしたものです。\
@@ -254,3 +260,5 @@ Duplidate readsの含まれている数を示しています。
 
 ## 7 カウントデータをTPM値に変換する
 ここからは作業をRStudioに移します。\
+
+
