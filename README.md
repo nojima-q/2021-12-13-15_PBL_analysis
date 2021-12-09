@@ -9,7 +9,19 @@ Cygwinを利用する場合は、Trimmomaticの実行にJava、HISAT2の実行�
 Rのインストール\
 https://www.r-project.org/ からダウンロードして下さい。\
 RStudioのインストール\
-https://www.rstudio.com/products/rstudio/ からダウンロードして下さい。
+https://www.rstudio.com/products/rstudio/ からダウンロードして下さい。\
+下記は必要なRパッケージをインストールするRスクリプトです。
+```
+install.packages("BiocManager")
+install.packages("ggplot2")
+install.packages("reshape2")
+BiocManager::install("GenomicFeatures")
+BiocManager::install("clusterProfiler")
+BiocManager::install("enrichplot")
+BiocManager::install("biomaRt")
+BiocManager::install("org.Hs.eg.db")
+BiocManager::install("DOSE")
+```
 
 ## 使用データ
 下記のpaired-endでシーケンスされた２サンプルのデータを使用します。\
@@ -260,5 +272,7 @@ Duplidate readsの含まれている数を示しています。
 
 ## 7 カウントデータをTPM値に変換する
 ここからは作業をRStudioに移します。\
+```
 
+```
 
