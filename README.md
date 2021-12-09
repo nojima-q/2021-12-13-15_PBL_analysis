@@ -298,7 +298,7 @@ tpm <- function(count, gene.len) {
   rate <- count / gene.len
   rate / sum(rate) * 1e6
 }
-tpms <- apply(merge_combat, 2, function(x) tpm(count = x, gene.len = gene.len.sorted))
+tpms <- apply(data, 2, function(x) tpm(count = x, gene.len = gene.len.sorted))
 ```
 TPM値をlog2変換しますが、0の場合があるため、TPMに1を足して変換します。
 ```
