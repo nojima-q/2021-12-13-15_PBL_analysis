@@ -259,7 +259,7 @@ Duplidate readsの含まれている数を示しています。
 マッピング結果であるSAMファイルからgeneごとまたはtranscriptごとにリードのカウント数を出力します。\
 カウントデータの出力には[Subread package](http://subread.sourceforge.net/)に含まれる```featureCounts```というプログラムを使用します。
 ```
-~/subread-2.0.1-MacOS-x86_64/bin/featureCounts -O -M -T 18 -p -t exon -g gene_id -a ./Homo_sapiens.GRCh38.104.gtf -o sample1_count.txt ./sample1_hisat2.sam
+~/subread-2.0.1-MacOS-x86_64/bin/featureCounts -O -M -T 18 -p -t exon -g gene_id -a ./Homo_sapiens.GRCh38.104.gtf -o sample_count.txt sample*_hisat2.sam
 ```
 - -O：複数のfeatureで定義されている特定のゲノム領域にマッピングされたリードもカウントする
 - -M：マルチマッピングされたリードもカウントする
@@ -269,6 +269,11 @@ Duplidate readsの含まれている数を示しています。
 - -g：gene levelでカウントしたい場合は```gene_id```を、transcript levelでカウントしたい場合は```transcript_id```を指定する
 - -a：アノテーションファイル（GTFファイル等）を指定
 - -o：出力ファイル名を指定
+
+遺伝子IDとカウント値のみを抽出します。
+```
+cut -f1,7- sample_count.txt | grep -v ^\# > featureCounts_output.txt 
+```
 
 ## 7 カウントデータをTPM値に変換する
 ここからは作業をRStudioに移します。\
@@ -299,6 +304,11 @@ tpm <- function(count, gene.len) {
   rate / sum(rate) * 1e6
 }
 tpms <- apply(data, 2, function(x) tpm(count = x, gene.len = gene.len.sorted))
+
+```
+featureCountsの出力ファイルからカウントデータを抽出したファイル```featureCounts_output.txt```を読み込みます。
+```
+data <- read.table("~/featureCounts_output.txt ", header = TRUE, row.names = 1, sep = "\t")
 ```
 TPM値をlog2変換しますが、0の場合があるため、TPMに1を足して変換します。
 ```
