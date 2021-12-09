@@ -228,7 +228,7 @@ Duplidate readsの含まれている数を示しています。
 ~/hisat2-2.1.0/hisat2 -p 40 --dta -x ./GRCh38.104 -1 ./sample1_1_trim_paired.fastq.gz -2 ./sample1_2_trim_paired.fastq.gz -S sample1_hisat2.sam 2> sample1_hisat2_log.txt
 ```
 - -p：スレッド数（使用するPC環境に合わせて設定して下さい。）
-- --dta：
+- --dta：アセンブラーなど下流の解析ツールを使用する際のオプション。またメモリ使用量を改善する。
 - -x：インデックス化したリファレンスゲノムファイル
 - -1：FowardリードのFastqファイルを指定
 - -2：ReverseリードのFastqファイルを指定
@@ -240,4 +240,14 @@ Duplidate readsの含まれている数を示しています。
 ## 6 マッピングデータから遺伝子ごとにリードのカウントデータを取得する
 マッピング結果であるSAMファイルからgeneごとまたはtranscriptごとにリードのカウント数を出力します。\
 カウントデータの出力には[Subread package](http://subread.sourceforge.net/)に含まれる```featureCounts```というプログラムを使用します。
-
+```
+~/subread-2.0.1-MacOS-x86_64/bin/featureCounts -O -M -T 18 -p -t gene -g gene_id -a ./Homo_sapiens.GRCh38.104.gtf -o sample1_count.txt ./sample1_hisat2.sam
+```
+- -O：
+- -M：
+- -T：スレッド数（使用するPC環境に合わせて設定して下さい。）
+- -p：paired-endの場合に指定（1リードペアを1カウントする。）
+- -t：
+- -g：
+- -a：アノテーションファイル（GTFファイル等）を指定
+- -o：出力ファイル名を指定
