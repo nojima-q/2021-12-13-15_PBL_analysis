@@ -137,7 +137,7 @@ Duplidate readsの含まれている数を示しています。
 
 ## 3 アダプターの除去およびリードのトリミング
 Trimmomaticを使って、アダプターの除去および低スコアな塩基のトリミングを同時に行います。
-アダプター配列を記載したFATSAファイルは下記よりダウンロードして下さい。（今回は、illumina社のTruSeqシリーズの配列を記載しています。自前データで実行する際は、ライブラリー作製キットで使用している配列が記載されたFASTAファイルを用意して実行して下さい。）\
+アダプター配列を記載したFATSAファイルは[ここ](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/Truseq_stranded_totalRNA_adapter.fa)からダウンロード可能です。（今回は、illumina社のTruSeqシリーズの配列を記載しています。自前データで実行する際は、ライブラリー作製キットで使用している配列が記載されたFASTAファイルを用意して実行して下さい。）\
 下記はpaired-endでシーケンスしたFASTQファイルの場合です。
 ```
 java -jar ~/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 4 -phred33\
