@@ -251,3 +251,6 @@ Duplidate readsの含まれている数を示しています。
 - -g：gene levelでカウントしたい場合は```gene_id```を、transcript levelでカウントしたい場合は```transcript_id```を指定する
 - -a：アノテーションファイル（GTFファイル等）を指定
 - -o：出力ファイル名を指定
+
+## 7 カウントデータをTPM値に変換する
+ここからは作業をRStudioに移します。\
