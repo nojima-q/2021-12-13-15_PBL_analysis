@@ -282,10 +282,10 @@ featureCountsの出力ファイルからカウントデータを抽出したフ�
 data <- read.table("~/featureCounts_all_output.txt", header = TRUE, row.names = 1, sep = "\t")
 ```
 
-続いて、GTFファイルからgene lengthを抽出します。
+続いて、GTFファイルからgene lengthを抽出します。```featureCounts_all_output.txt```を出力した際に使用したGTFファイルのバージョンがGRCh38.101だったため、そのバージョンのGTFファイルを指定しています。バージョンが違うとエラーになります。
 ```
 library(GenomicFeatures)
-txdb <- makeTxDbFromGFF("~/Homo_sapiens.GRCh38.104.gtf", format = "gtf")
+txdb <- makeTxDbFromGFF("~/Homo_sapiens.GRCh38.101.gtf", format = "gtf")
 exons.list.per.gene <- exonsBy(txdb, by = 'gene', use.names = FALSE) #featureCountsでtranscriptレベルでカウントした場合は、by引数の'gene'を'tx'に、use.names引数をTRUEに変更します。
 exonic.gene.sizes <- lapply(exons.list.per.gene, function(x){sum(width(reduce(x)))})
 exonic.gene.sizes.2 <- as.numeric(exonic.gene.sizes)
@@ -296,7 +296,7 @@ exonic.gene.sizes.2$ensembl_gene_id <- row.names(exonic.gene.sizes.2)
 ```
 上記スクリプトの3行目は少し時間がかかるため、今回は下記の様に[事前に用意したファイル](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/exonic_gene_sizes_2_GRCh38.104.rds)を読み込んで使用して下さい。
 ```
-exonic.gene.sizes.2 <- readRDS("~/exonic_gene_sizes_2_GRCh38.104.rds")
+exonic.gene.sizes.2 <- readRDS("~/exonic_gene_sizes_2_GRCh38.101.rds")
 gene.len <- exonic.gene.sizes.2$as.matrix.exonic.gene.sizes.2.
 names(gene.len) <- exonic.gene.sizes.2$ensembl_gene_id
 gene.list.order <- row.names(data)
