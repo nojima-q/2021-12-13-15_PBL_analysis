@@ -324,15 +324,44 @@ tpms <- data.frame(log2(tpms + 1))
 今回の公共データは患者20人、健常者19人からなるデータです。
 
 ```
-disease <- as.matrix(tpms[,1:20]) #患者データを抽出
-control <- as.matrix(tpms[,21:39]) #健常者データを抽出
-
+disease <- as.matrix(tpms[,1:20])
+control <- as.matrix(tpms[,21:39])
 r1 <- matrix(nrow = nrow(disease))
 for(i in 1:nrow(disease)){
   r1[i,] <- t.test(disease[i,], control[i,], var.equal=F, paired=F, alternative = "two.sided")$p.value
-} #Welch'sのt検定の実行
-r1 <- data.frame(na.omit(r1))
-ggplot(r1, aes(x = na.omit.r1.)) + geom_histogram(position = "dodge", alpha = 1, binwidth = 0.01) #P値のヒストグラムの描写
+}
+wel <- data.frame(tpms, r1)
+wel <- na.omit(wel)
+ggplot(wel, aes(x = r1)) + geom_histogram(position = "dodge", alpha = 1, binwidth = 0.01)
 ```
 P値のヒストグラムから、小さなP値の比率が高いことから、患者・健常者間で発現差異のある遺伝子は多いと考えられます。\
 ![Rplot02](https://user-images.githubusercontent.com/85273234/145535858-c9cb15fc-1a55-4d8f-b5de-d125b51aa7fa.jpeg)
+Benjamini and Hochberg法によるP値の補正
+```
+q.value <- data.frame(p.adjust(p = wel$r1, method = "BH")) #P値の補正
+wel <- data.frame(wel, q.value) #元データ
+```
+Fold changeの算出
+```
+disease.mean <- rowMeans(wel[,1:20]) #患者サンプル
+control.mean <- rowMeans(wel[,21:39]) #健常者サンプル
+wel$FC <- disease.mean - control.mean #Fold changeの算出
+```
+基本的統計量が全て算出されましたので、DEGsを定義します。\
+今回は、|FC| ≥ 1かつadjusted P-value < 0.05を満たす遺伝子群をDEGsとします。
+```
+wel$Color = ifelse(abs(wel$FC) >= 1 & wel$p.adjust.p...wel.r1..method....BH.. < 0.05, "DEG", "non-DEG")
+```
+
+Volcano plotでDEGsを可視化します。
+```
+ggplot(wel, aes(x=FC, y=-log10(p.adjust.p...wel.r1..method....BH..), colour=Color)) + theme(panel.background = element_blank(), axis.line=element_line(colour = "black"), panel.grid = element_line(colour = "gray")) +
+  geom_point(alpha=1, size=3) + xlab(expression(log[2]("Disease / Control"))) + ylab(expression(-log[10]("adjusted P-value"))) +
+  theme(legend.position = "right", plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.title = element_text(size = rel(1.25))) +
+  geom_hline(yintercept=1.30102999566, linetype="dashed", colour="#00ff00", size = 1) +
+  geom_vline(xintercept=1, linetype="dashed", colour="#00ff00", size = 1) +
+  geom_vline(xintercept=-1, linetype="dashed", colour="#00ff00", size = 1) +
+  theme(legend.title=element_text(size=30, face = "plain") , legend.text=element_text(size=30, face = "plain")) +
+  theme(plot.title=element_text(size=30, colour="black", face = "bold",hjust = 1.0), axis.text=element_text(size=25, colour="black", face = "plain"), axis.title=element_text(size=30, face = "plain"))
+```
+赤が|FC| ≥ 1かつadjusted P-value < 0.05を満たす遺伝子群、青が満たさなかった遺伝子群です。
