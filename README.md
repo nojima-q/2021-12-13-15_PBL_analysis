@@ -320,4 +320,18 @@ tpms <- data.frame(log2(tpms + 1))
 ```
 
 ## 7 DEGsの検出
-発現変動遺伝子
+発現変動遺伝子（Differentially expressed genes; DEGs）の抽出を行います。\
+今回の公共データは患者20人、健常者19人からなるデータです。
+
+```
+disease <- as.matrix(tpms[,1:20]) #患者データを抽出
+control <- as.matrix(tpms[,21:39]) #健常者データを抽出
+
+r1 <- matrix(nrow = nrow(disease))
+for(i in 1:nrow(disease)){
+  r1[i,] <- t.test(disease[i,], control[i,], var.equal=F, paired=F, alternative = "two.sided")$p.value
+} #Welch'sのt検定の実行
+r1 <- data.frame(na.omit(r1))
+ggplot(r1, aes(x = na.omit.r1.)) + geom_histogram(position = "dodge", alpha = 1, binwidth = 0.01) #P値のヒストグラムの描写
+```
+P値のヒストグラムから、小さなP値の比率が高いことから、患者・健常者間で発現祭のある遺伝子は多いと考えられます。\
