@@ -368,3 +368,4 @@ ggplot(wel, aes(x=FC, y=-log10(p.adjust.p...wel.r1..method....BH..), colour=Colo
 赤が|FC| ≥ 1かつadjusted P-value < 0.05を満たす遺伝子群、青が満たさなかった遺伝子群です。\
 縦の緑破線がFCの閾値、横の緑破線がadjusted P-valueの閾値を示します。
 
+## 9 エンリッチメント解析
