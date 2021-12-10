@@ -316,6 +316,6 @@ colSums(tpms)
 ```
 TPM値に1を足してlog2変換します。
 ```
-tpms <- log2(tpms + 1)
+tpms <- data.frame(log2(tpms + 1))
 ```
 
