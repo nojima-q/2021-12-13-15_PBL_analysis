@@ -277,7 +277,7 @@ cut -f1,7- sample_count.txt | grep -v ^\# > featureCounts_output.txt
 
 ## 7 カウントデータをTPM値に変換する
 ここからは作業をRStudioに移します。\
-featureCountsの出力ファイルからカウントデータを抽出したファイルを読み込みます。６で出力したファイルはPBL用のスモールデータです。ある疾患の公共RNA-Seqデータ（３９サンプル）のカウント値を出力したファイル```featureCounts_all_output.txt```を用意しましたので、こちらを読み込んで下さい。
+featureCountsの出力ファイルからカウントデータを抽出したファイルを読み込みます。６で出力したファイルはPBL用のスモールデータです。ある疾患の公共RNA-Seqデータ（３９サンプル）のカウント値を出力したファイル[```featureCounts_all_output.txt```](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/featureCounts_all_output.txt)を用意しましたので、こちらを読み込んで下さい。
 ```
 data <- read.table("~/featureCounts_all_output.txt", header = TRUE, row.names = 1, sep = "\t")
 ```
