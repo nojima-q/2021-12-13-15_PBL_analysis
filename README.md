@@ -277,9 +277,9 @@ cut -f1,7- sample_count.txt | grep -v ^\# > featureCounts_output.txt
 
 ## 7 カウントデータをTPM値に変換する
 ここからは作業をRStudioに移します。\
-featureCountsの出力ファイルからカウントデータを抽出したファイル```featureCounts_output.txt```を読み込みます。
+featureCountsの出力ファイルからカウントデータを抽出したファイルを読み込みます。６で出力したファイルはPBL用のスモールデータです。ある疾患の公共RNA-Seqデータ（３９サンプル）のカウント値を出力したファイル```featureCounts_all_output.txt```を用意しましたので、こちらを読み込んで下さい。
 ```
-data <- read.table("~/featureCounts_output.txt ", header = TRUE, row.names = 1, sep = "\t")
+data <- read.table("~/featureCounts_all_output.txt", header = TRUE, row.names = 1, sep = "\t")
 ```
 
 続いて、GTFファイルからgene lengthを抽出します。
