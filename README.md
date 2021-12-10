@@ -334,5 +334,5 @@ for(i in 1:nrow(disease)){
 r1 <- data.frame(na.omit(r1))
 ggplot(r1, aes(x = na.omit.r1.)) + geom_histogram(position = "dodge", alpha = 1, binwidth = 0.01) #P値のヒストグラムの描写
 ```
-P値のヒストグラムから、小さなP値の比率が高いことから、患者・健常者間で発現祭のある遺伝子は多いと考えられます。\
+P値のヒストグラムから、小さなP値の比率が高いことから、患者・健常者間で発現差異のある遺伝子は多いと考えられます。\
 ![Rplot02](https://user-images.githubusercontent.com/85273234/145535858-c9cb15fc-1a55-4d8f-b5de-d125b51aa7fa.jpeg)
