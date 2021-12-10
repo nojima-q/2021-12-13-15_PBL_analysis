@@ -319,3 +319,5 @@ TPM値に1を足してlog2変換します。
 tpms <- data.frame(log2(tpms + 1))
 ```
 
+## 7 DEGsの検出
+発現変動遺伝子
