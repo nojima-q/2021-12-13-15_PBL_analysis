@@ -294,7 +294,7 @@ exonic.gene.sizes.2 <- data.frame(as.matrix(exonic.gene.sizes.2))
 exonic.gene.sizes.2$ensembl_gene_id <- row.names(exonic.gene.sizes.2)
 
 ```
-上記スクリプトの3行目は少し時間がかかるため、今回は下記の様に[事前に用意したファイル](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/exonic_gene_sizes_2_GRCh38.104.rds)を読み込んで使用して下さい。
+上記スクリプトの3行目は少し時間がかかるため、今回は下記の様に[事前に用意したファイル](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/exonic_gene_sizes_2_GRCh38.101.rds)を読み込んで使用して下さい。
 ```
 exonic.gene.sizes.2 <- readRDS("~/exonic_gene_sizes_2_GRCh38.101.rds")
 gene.len <- exonic.gene.sizes.2$as.matrix.exonic.gene.sizes.2.
