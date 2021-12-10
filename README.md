@@ -364,7 +364,7 @@ ggplot(wel, aes(x=FC, y=-log10(p.adjust.p...wel.r1..method....BH..), colour=Colo
   theme(legend.title=element_text(size=30, face = "plain") , legend.text=element_text(size=30, face = "plain")) +
   theme(plot.title=element_text(size=30, colour="black", face = "bold",hjust = 1.0), axis.text=element_text(size=25, colour="black", face = "plain"), axis.title=element_text(size=30, face = "plain"))
 ```
-
+![Rplot01](https://user-images.githubusercontent.com/85273234/145540365-ae044914-6fc4-4d7f-845a-176f6f5c777b.jpeg)
 赤が|FC| ≥ 1かつadjusted P-value < 0.05を満たす遺伝子群、青が満たさなかった遺伝子群です。\
 縦の緑破線がFCの閾値、横の緑破線がadjusted P-valueの閾値を示します。
 
