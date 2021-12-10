@@ -310,9 +310,12 @@ tpm <- function(count, gene.len) {
 ```
 tpms <- apply(data, 2, function(x) tpm(count = x, gene.len = gene.len.sorted))
 ```
+サンプルの総リード数が１００万になっているか確認します。
+```
+colSums(tpms)
+```
 TPM値に1を足してlog2変換します。
 ```
 tpms <- log2(tpms + 1)
 ```
-カラム名がファイル名になっているため変更します。
-```
+
