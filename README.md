@@ -339,7 +339,7 @@ P値のヒストグラムから、小さなP値の比率が高いことから、
 Benjamini and Hochberg法によるP値の補正
 ```
 q.value <- data.frame(p.adjust(p = wel$r1, method = "BH")) #P値の補正
-wel <- data.frame(wel, q.value) #元データ
+wel <- data.frame(wel, q.value) #元データと結合
 ```
 Fold changeの算出
 ```
