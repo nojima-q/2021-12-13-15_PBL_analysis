@@ -383,7 +383,7 @@ res.gene <- getBM(attributes = c("ensembl_gene_id", "entrezgene_id"), filters = 
 res.gene <- na.omit(res.gene)
 DEG2 <- merge(res.gene, DEG, by = "ensembl_gene_id")
 ```
-#上記４，５行は場合にbiomaRt側サーバーが停止しているとエラーとなります。その場合は事前に用意したRDataを読み込んで使用して下さい。
+#上記４，５行は場合にbiomaRt側サーバーが停止しているとエラーとなります。その場合は[事前に用意したRData](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/biomaRt_104.RData)を読み込んで使用して下さい。
 ```
 load(file = "~/biomaRt_104.RData")
 
