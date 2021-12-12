@@ -440,4 +440,5 @@ barplot(edo2, showCategory=20, font.size = 12)
 edox2 <- setReadable(edo2, 'org.Hs.eg.db', 'ENTREZID')
 cnetplot(edox2, foldChange=geneList2, showCategory = 11, layout = "kk", fixed = TRUE, categorySize = "geneNum", max.overlaps = 1000)
 ```
+<img width="1094" alt="スクリーンショット 2021-12-12 18 25 39" src="https://user-images.githubusercontent.com/85273234/145707105-d7924e1d-5333-4ccb-9f06-69078c9049eb.png">
 
