@@ -413,3 +413,21 @@ goplot(ego.result.simple)
 ```
 <img width="1147" alt="スクリーンショット 2021-12-12 18 06 39" src="https://user-images.githubusercontent.com/85273234/145706607-9a6d0792-cb9d-4ee4-b3e3-ffceb114c294.png">
 
+### 9-2 KEGGパスウェイ解析
+KEGG(Kyoto Encyclopedia of Genes and Genomes)パスウェイ解析を行います。\
+GO解析と同様に様々な方法で描写可能です。
+```
+ego.result.kegg <- enrichKEGG(gene = as.character(DEG2$entrezgene_id),
+                                               universe      = NULL,
+                                               organism = "hsa",
+                                               keyType = "ncbi-geneid",
+                                               pAdjustMethod = "BH",
+                                               pvalueCutoff  = 0.05,
+                                               qvalueCutoff  = 0.05)
+
+barplot(ego.result.kegg, drop=TRUE, showCategory=30)
+dotplot(ego.result.kegg)
+emapplot(ego.result.kegg)
+cnetplot(ego.result.kegg, categorySize="pvalue")
+goplot(ego.result.kegg)
+```
