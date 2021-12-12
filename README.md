@@ -445,3 +445,4 @@ cnetplot(edox2, foldChange=geneList2, showCategory = 11, layout = "kk", fixed = 
 ## 今回使用したデータセット
 特発性肺線維症(Idiopathic pulmonary fibrosis; IPF)のデータを使用しました。\
 Disease enrichment解析では```Pulmonary Fibrosis```や```Idiopathic Pulmonary Fibrosis```といったタームがエンリッチしています。
+<img width="999" alt="スクリーンショット 2021-12-12 18 27 39" src="https://user-images.githubusercontent.com/85273234/145707755-77fdddf0-1b47-41b0-b213-dc06dfa3d533.png">
