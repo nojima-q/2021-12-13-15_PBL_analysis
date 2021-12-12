@@ -17,7 +17,6 @@ install.packages("ggplot2")
 install.packages("reshape2")
 BiocManager::install("GenomicFeatures")
 BiocManager::install("clusterProfiler")
-BiocManager::install("enrichplot")
 BiocManager::install("biomaRt")
 BiocManager::install("org.Hs.eg.db")
 BiocManager::install("DOSE")
@@ -430,3 +429,15 @@ dotplot(ego.result.kegg, showCategory=10)
 emapplot(ego.result.kegg, showCategory=10)
 ```
 <img width="1146" alt="スクリーンショット 2021-12-12 18 14 53" src="https://user-images.githubusercontent.com/85273234/145706790-54ac8cc7-0ce1-440f-aeb9-2db8d6d95922.png">
+
+### 9-3 Disease enrichment解析
+Disease enrichment解析は、入力した遺伝子リストがどのような疾患に関わっているか解析する手法です。
+```
+library(DOSE)
+DEG3 <- DEG2[abs(DEG2$FC) >= 2,]
+edo2 <- enrichDGN(DEG3$entrezgene_id)
+barplot(edo2, showCategory=20, font.size = 12)
+edox2 <- setReadable(edo2, 'org.Hs.eg.db', 'ENTREZID')
+cnetplot(edox2, foldChange=geneList2, showCategory = 11, layout = "kk", fixed = TRUE, categorySize = "geneNum", max.overlaps = 1000)
+```
+
