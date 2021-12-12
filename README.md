@@ -429,3 +429,4 @@ barplot(ego.result.kegg, showCategory=10)
 dotplot(ego.result.kegg, showCategory=10)
 emapplot(ego.result.kegg, showCategory=10)
 ```
+<img width="1146" alt="スクリーンショット 2021-12-12 18 14 53" src="https://user-images.githubusercontent.com/85273234/145706790-54ac8cc7-0ce1-440f-aeb9-2db8d6d95922.png">
