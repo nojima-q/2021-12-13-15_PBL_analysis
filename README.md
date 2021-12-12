@@ -390,7 +390,6 @@ load(file = "~/biomaRt_104.RData")
 ### 9-1 GO解析
 まずはGO解析を行います。棒グラフやネットワークグラフなど様々な方法で描写することが可能です。
 ```
-
 library(clusterProfiler)
 library(org.Hs.eg.db)
 #GOエンリッチメント解析を実行
