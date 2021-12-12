@@ -431,7 +431,7 @@ emapplot(ego.result.kegg, showCategory=10)
 <img width="1146" alt="スクリーンショット 2021-12-12 18 14 53" src="https://user-images.githubusercontent.com/85273234/145706790-54ac8cc7-0ce1-440f-aeb9-2db8d6d95922.png">
 
 ### 9-3 Disease enrichment解析
-Disease enrichment解析は、入力した遺伝子リストがどのような疾患に関わっているか解析する手法です。
+Disease enrichment解析では、入力した遺伝子リストがどのような疾患に関わっているか調査することができます。
 ```
 library(DOSE)
 DEG3 <- DEG2[abs(DEG2$FC) >= 2,]
@@ -442,3 +442,6 @@ cnetplot(edox2, foldChange=geneList2, showCategory = 11, layout = "kk", fixed = 
 ```
 <img width="1094" alt="スクリーンショット 2021-12-12 18 25 39" src="https://user-images.githubusercontent.com/85273234/145707105-d7924e1d-5333-4ccb-9f06-69078c9049eb.png">
 
+## 今回使用したデータセット
+特発性肺線維症(Idiopathic pulmonary fibrosis; IPF)のデータを使用しました。\
+Disease enrichment解析では```Pulmonary Fibrosis```やIdiopathic pulmonary fibrosis```といったタームがエンリッチしています。
