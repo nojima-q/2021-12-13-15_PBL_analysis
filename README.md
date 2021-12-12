@@ -388,9 +388,9 @@ DEG2 <- merge(res.gene, DEG, by = "ensembl_gene_id")
 load(file = "~/biomaRt_104.RData")
 ```
 ### 9-1 GO解析
-まずはGO解析を行います。棒グラフやネットワークグラフなど様々な方法で描写することが可能です。\
 GO解析では、Biological Process(BP)、Molecular Function(MF)、Cellular Component(CC)の３種類があります。\
 下記はBPを選択していますが、```ont```引数を変更すればMF、CCを選択可能です。```ALL```を指定すると全て解析対象となります。
+棒グラフやネットワークグラフなど様々な方法で描写することが可能です。```showCategory```引数で表示するterm数を指定できます。\
 ```
 library(clusterProfiler)
 library(org.Hs.eg.db)
@@ -415,7 +415,7 @@ goplot(ego.result.simple)
 
 ### 9-2 KEGGパスウェイ解析
 KEGG(Kyoto Encyclopedia of Genes and Genomes)パスウェイ解析を行います。\
-GO解析と同様に様々な方法で描写可能です。
+GO解析と同様に様々な方法で描写可能です。```showCategory```引数で表示するterm数を指定できます。
 ```
 ego.result.kegg <- enrichKEGG(gene = as.character(DEG2$entrezgene_id),
                                                universe      = NULL,
@@ -425,9 +425,7 @@ ego.result.kegg <- enrichKEGG(gene = as.character(DEG2$entrezgene_id),
                                                pvalueCutoff  = 0.05,
                                                qvalueCutoff  = 0.05)
 
-barplot(ego.result.kegg, drop=TRUE, showCategory=30)
-dotplot(ego.result.kegg)
-emapplot(ego.result.kegg)
-cnetplot(ego.result.kegg, categorySize="pvalue")
-goplot(ego.result.kegg)
+barplot(ego.result.kegg, showCategory=10)
+dotplot(ego.result.kegg, showCategory=10)
+emapplot(ego.result.kegg, showCategory=10)
 ```
