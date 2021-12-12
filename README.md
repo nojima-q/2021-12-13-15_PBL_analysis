@@ -370,7 +370,7 @@ ggplot(wel, aes(x=FC, y=-log10(p.adjust.p...wel.r1..method....BH..), colour=Colo
 
 ## 9 エンリッチメント解析
 疾患データでどのような生物学的イベントが起きているのか、どのようなパスウェイが動いているのか調査します。\
-DEGsを入力データとしてGene Ontology解析とKEGGパスウェイ解析について紹介します。\
+DEGsを入力データとしてGene Ontology(GO)解析とKEGGパスウェイ解析について紹介します。\
 今回の解析方法では、入力データとしてFC値とEntrez gene IDが必要です。\
 そこで、biomaRtライブラリーを使ってEnsembl gene IDからEntrez gene IDに変換します。
 ```
@@ -383,7 +383,30 @@ res.gene <- getBM(attributes = c("ensembl_gene_id", "entrezgene_id"), filters = 
 res.gene <- na.omit(res.gene)
 DEG2 <- merge(res.gene, DEG, by = "ensembl_gene_id")
 ```
-#上記４，５行は場合にbiomaRt側サーバーが停止しているとエラーとなります。その場合は[事前に用意したRData](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/biomaRt_104.RData)を読み込んで使用して下さい。
+上記４，５行は場合にbiomaRt側サーバーが停止しているとエラーとなります。その場合は[事前に用意したRData](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/biomaRt_104.RData)を読み込んで使用して下さい。
 ```
 load(file = "~/biomaRt_104.RData")
+```
+### 9-1 GO解析
+まずはGO解析を行います。棒グラフやネットワークグラフなど様々な方法で描写することが可能です。
+```
+
+library(clusterProfiler)
+library(org.Hs.eg.db)
+#GOエンリッチメント解析を実行
+ego.result <- enrichGO(gene = as.character(DEG2$entrezgene_id),
+                                        universe      = NULL,
+                                        OrgDb         = org.Hs.eg.db,
+                                        ont           = "BP", #"BP","CC","MF","ALL"から選択
+                                        pAdjustMethod = "BH",
+                                        pvalueCutoff  = 0.05,
+                                        qvalueCutoff  = 0.05, 
+                                        readable      = TRUE) #Gene IDを遺伝子名に変換
+
+ego.result.simple <- simplify(ego.result) #GO termの冗長性を除去
+barplot(ego.result.simple, drop=TRUE, showCategory=30)
+dotplot(ego.result.simple)
+emapplot(ego.result.simple)
+cnetplot(ego.result.simple, categorySize="pvalue")
+goplot(ego.result.simple)
 ```
