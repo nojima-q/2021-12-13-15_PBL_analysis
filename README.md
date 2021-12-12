@@ -369,3 +369,22 @@ ggplot(wel, aes(x=FC, y=-log10(p.adjust.p...wel.r1..method....BH..), colour=Colo
 縦の緑破線がFCの閾値、横の緑破線がadjusted P-valueの閾値を示します。
 
 ## 9 エンリッチメント解析
+疾患データでどのような生物学的イベントが起きているのか、どのようなパスウェイが動いているのか調査します。\
+DEGsを入力データとしてGene Ontology解析とKEGGパスウェイ解析について紹介します。\
+今回の解析方法では、入力データとしてFC値とEntrez gene IDが必要です。\
+そこで、biomaRtライブラリーを使ってEnsembl gene IDからEntrez gene IDに変換します。
+```
+library(biomaRt)
+DEG <- data.frame(row.names(wel[wel$Color == "DEG",]), wel[wel$Color == "DEG",]$FC)
+colnames(DEG) <- c("ensembl_gene_id", "FC")
+db <- useMart("ensembl", dataset = "hsapiens_gene_ensembl", version = "Ensembl Genes 104", host = "http://may2021.archive.ensembl.org")
+hg <- useDataset("hsapiens_gene_ensembl", mart = db)
+res.gene <- getBM(attributes = c("ensembl_gene_id", "entrezgene_id"), filters = "ensembl_gene_id", values = DEG, mart = hg, uniqueRows=T)
+res.gene <- na.omit(res.gene)
+DEG2 <- merge(res.gene, DEG, by = "ensembl_gene_id")
+```
+#上記４，５行は場合にbiomaRt側サーバーが停止しているとエラーとなります。その場合は事前に用意したRDataを読み込んで使用して下さい。
+```
+load(file = "~/biomaRt_104.RData")
+
+```
