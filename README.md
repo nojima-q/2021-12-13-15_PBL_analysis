@@ -388,7 +388,9 @@ DEG2 <- merge(res.gene, DEG, by = "ensembl_gene_id")
 load(file = "~/biomaRt_104.RData")
 ```
 ### 9-1 GO解析
-まずはGO解析を行います。棒グラフやネットワークグラフなど様々な方法で描写することが可能です。
+まずはGO解析を行います。棒グラフやネットワークグラフなど様々な方法で描写することが可能です。\
+GO解析では、Biological Process(BP)、Molecular Function(MF)、Cellular Component(CC)の３種類があります。\
+下記はBPを選択していますが、```ont```引数を変更すればMF、CCを選択可能です。```ALL```を指定すると全て解析対象となります。
 ```
 library(clusterProfiler)
 library(org.Hs.eg.db)
