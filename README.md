@@ -411,4 +411,5 @@ emapplot(ego.result.simple)
 cnetplot(ego.result.simple, categorySize="pvalue")
 goplot(ego.result.simple)
 ```
-![スライド1](https://user-images.githubusercontent.com/85273234/145706576-8329aa89-514e-4c2f-b0b4-0a58b0e77f71.jpeg)
+<img width="1147" alt="スクリーンショット 2021-12-12 18 06 39" src="https://user-images.githubusercontent.com/85273234/145706607-9a6d0792-cb9d-4ee4-b3e3-ffceb114c294.png">
+
