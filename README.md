@@ -90,6 +90,9 @@ mkdir ~/fastqc_results
 <img width="912" alt="スクリーンショット 2021-12-02 17 19 34" src="https://user-images.githubusercontent.com/85273234/144384259-16f77dc6-b572-4e5e-b865-31aa4e7429d0.png">
 
 ### ３．FastQC解析結果
+各QC結果の説明は、下記のブログでよくまとめられています。\
+https://imamachi-n.hatenablog.com/entry/2017/03/27/234350
+
 #### Per base sequence quality
 リードの各塩基のクオリティスコアを示しています。 Phred quality scoreがだいたいグリーンの領域（Scoreが28以上）に収まっているかどうか確認します。 結果として、クオリティが低いリードは含まれていないことが確認できます。\
 <img width="882" alt="スクリーンショット 2021-12-03 12 19 30" src="https://user-images.githubusercontent.com/85273234/144539782-0ec533eb-3533-4e1a-94f6-7b25533e3463.png">
