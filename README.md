@@ -407,7 +407,6 @@ ego.result.simple <- simplify(ego.result) #GO termの冗長性を除去
 barplot(ego.result.simple, drop=TRUE, showCategory=30)
 dotplot(ego.result.simple)
 emapplot(ego.result.simple)
-cnetplot(ego.result.simple, categorySize="pvalue")
 goplot(ego.result.simple)
 ```
 <img width="1147" alt="スクリーンショット 2021-12-12 18 06 39" src="https://user-images.githubusercontent.com/85273234/145706607-9a6d0792-cb9d-4ee4-b3e3-ffceb114c294.png">
@@ -443,6 +442,8 @@ cnetplot(edox2, foldChange=geneList2, showCategory = 11, layout = "kk", fixed = 
 <img width="1094" alt="スクリーンショット 2021-12-12 18 25 39" src="https://user-images.githubusercontent.com/85273234/145707105-d7924e1d-5333-4ccb-9f06-69078c9049eb.png">
 
 ## 今回使用したデータセット
+### 元論文
 特発性肺線維症(Idiopathic pulmonary fibrosis; IPF)のデータを使用しました。\
 Disease enrichment解析では```Pulmonary Fibrosis```や```Idiopathic Pulmonary Fibrosis```といったタームがエンリッチしています。
 <img width="999" alt="スクリーンショット 2021-12-12 18 27 39" src="https://user-images.githubusercontent.com/85273234/145707755-77fdddf0-1b47-41b0-b213-dc06dfa3d533.png">
+### 再解析論文
