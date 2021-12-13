@@ -2,7 +2,7 @@
 ## インストール
 - Unix\
 SRA Toolkit、Trimmomatic、HISAT2、featureCountsはbinary fileをダウンロードして下さい。コンパイルなしでパスを指定するだけで実行できます。\
-FastQCはソースコードをダウンロードし、コンパイルすることでコマンド操作で実行できます。またアプリケーションとしても公開されています。
+FastQCはソースコードをダウンロードし、コンパイルすることでコマンド操作で実行できます。またアプリケーションとしても公開されています。\
 Trimmomaticの動作確認は、下記のコマンドを実行してください。（Trimmomaticのディレクトリをホームディレクトに入れている場合です。）
 ```
 java -jar ~/Trimmomatic-0.39/trimmomatic-0.36.jar
