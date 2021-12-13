@@ -447,3 +447,5 @@ cnetplot(edox2, foldChange=geneList2, showCategory = 11, layout = "kk", fixed = 
 Disease enrichment解析では```Pulmonary Fibrosis```や```Idiopathic Pulmonary Fibrosis```といったタームがエンリッチしています。
 <img width="999" alt="スクリーンショット 2021-12-12 18 27 39" src="https://user-images.githubusercontent.com/85273234/145707755-77fdddf0-1b47-41b0-b213-dc06dfa3d533.png">
 ### 再解析論文
+<img width="965" alt="スクリーンショット 2021-12-13 10 02 57" src="https://user-images.githubusercontent.com/85273234/145737436-da0ac0eb-1c17-4b35-9f82-b82846251ff2.png">
+![feb412982-fig-0003-m](https://user-images.githubusercontent.com/85273234/145737458-425db00f-db60-4637-90f9-c3b1d7df87bc.jpg)
