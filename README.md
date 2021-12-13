@@ -5,6 +5,18 @@ SRA Toolkit、Trimmomatic、HISAT2、featureCountsはbinary fileをダウンロ�
 FastQCはソースコードをダウンロードし、コンパイルすることでコマンド操作で実行できます。またアプリケーションとしても公開されています。\
 Trimmomaticの動作確認は、下記のコマンドを実行してください。（Trimmomaticのディレクトリをホームディレクトに入れている場合です。）
 ```
+mkdir ~/PBL
+mv ~/Download/hisat2-2.2.1-OSX_x86_64.zip ~/PBL/
+mv ~/Download/Trimmomatic-0.39.zip ~/PBL/
+mv ~/Downloads/sratoolkit.2.11.3-mac64.tar.gz ~/PBL/
+mv ~/Downloads/subread-2.0.3-macOS-x86_64.tar.gz ~/PBL/
+cd ~/PBL/
+gunzip ~/Download/hisat2-2.2.1-OSX_x86_64.zip
+gunzip ~/Download/Trimmomatic-0.39.zip
+tar -zxvf ~/Download/sratoolkit.2.11.3-mac64.tar.gz
+tar -zxvf ~/Download/subread-2.0.3-macOS-x86_64.tar.gz
+
+
 java -jar ~/Trimmomatic-0.39/trimmomatic-0.39.jar
 ```
 
