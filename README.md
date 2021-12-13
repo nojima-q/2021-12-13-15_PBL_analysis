@@ -4,6 +4,7 @@
 SRA Toolkit、Trimmomatic、HISAT2、featureCountsはbinary fileをダウンロードして下さい。コンパイルなしでパスを指定するだけで実行できます。\
 FastQCはソースコードをダウンロードし、コンパイルすることでコマンド操作で実行できます。またアプリケーションとしても公開されています。\
 Trimmomaticの動作確認は、下記のコマンドを実行してください。（Trimmomaticのディレクトリをホームディレクトに入れている場合です。）\
+
 ファイルのダウンロードと解凍
 ```
 mkdir ~/PBL
@@ -18,13 +19,6 @@ tar -zxvf sratoolkit.2.11.3-mac64.tar.gz
 tar -zxvf subread-2.0.3-macOS-x86_64.tar.gz
 ```
 動作確認
-```
-./hisat2-2.2.1/hisat2
-```
-セキュリティーを許可します。
-```
-java -jar ~/PBL/Trimmomatic-0.39/trimmomatic-0.39.jar
-```
 
 - Windows\
 Cygwinを利用する場合は、Trimmomaticの実行にJava、HISAT2の実行にPerlが必要です。それぞれインストールして下さい。
