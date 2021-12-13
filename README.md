@@ -22,7 +22,7 @@ tar -zxvf subread-2.0.3-macOS-x86_64.tar.gz
 ./hisat2-2.2.1/hisat2
 ```
 セキュリティーを許可します。
-
+```
 java -jar ~/PBL/Trimmomatic-0.39/trimmomatic-0.39.jar
 ```
 
