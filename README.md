@@ -3,6 +3,9 @@
 - Unix\
 SRA Toolkit、Trimmomatic、HISAT2、featureCountsはbinary fileをダウンロードして下さい。コンパイルなしでパスを指定するだけで実行できます。\
 FastQCはソースコードをダウンロードし、コンパイルすることでコマンド操作で実行できます。またアプリケーションとしても公開されています。
+
+```
+~/
 - Windows\
 Cygwinを利用する場合は、Trimmomaticの実行にJava、HISAT2の実行にPerlが必要です。それぞれインストールして下さい。
 - R & RStudio\
