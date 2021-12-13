@@ -56,7 +56,7 @@ SRA Toolkitの```prefetch```、```fastq-dump```を使ってデータを取得す
 ```
 $ prefetch  --option-file ~/Downloads/SRR_Acc_list.txt
 ```
-次に```fastq-dump```でsraファイルからfastqファイルを取得する。PATHにfastqファイルを格納したいディレクトリのパスを記載。\
+次に```fastq-dump```でsraファイルからfastqファイルを取得する。```PATH```にfastqファイルを格納したいディレクトリのパスを記載。\
 ```
 $ find . -name '*.sra' -exec fastq-dump --gzip --split-files --outdir ./PATH {} \;
 ```
