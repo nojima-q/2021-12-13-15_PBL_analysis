@@ -432,6 +432,8 @@ Disease enrichment解析では、入力した遺伝子リストがどのよう�
 ```
 library(DOSE)
 DEG3 <- DEG2[abs(DEG2$FC) >= 2,]
+geneList2 <- DEG3[,3]
+names(geneList2) <- DEG3$entrezgene_id
 edo2 <- enrichDGN(DEG3$entrezgene_id)
 barplot(edo2, showCategory=20, font.size = 12)
 edox2 <- setReadable(edo2, 'org.Hs.eg.db', 'ENTREZID')
