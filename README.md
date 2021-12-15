@@ -5,21 +5,6 @@ SRA Toolkit、Trimmomatic、HISAT2、featureCountsはbinary fileをダウンロ�
 FastQCはソースコードをダウンロードし、コンパイルすることでコマンド操作で実行できます。またアプリケーションとしても公開されています。\
 Trimmomaticの動作確認は、下記のコマンドを実行してください。（Trimmomaticのディレクトリをホームディレクトに入れている場合です。）\
 
-ファイルのダウンロードと解凍
-```
-mkdir ~/PBL
-mv ~/Download/hisat2-2.2.1-OSX_x86_64.zip ~/PBL/
-mv ~/Download/Trimmomatic-0.39.zip ~/PBL/
-mv ~/Downloads/sratoolkit.2.11.3-mac64.tar.gz ~/PBL/
-mv ~/Downloads/subread-2.0.3-macOS-x86_64.tar.gz ~/PBL/
-cd ~/PBL/
-unzip hisat2-2.2.1-OSX_x86_64.zip
-unzip Trimmomatic-0.39.zip
-tar -zxvf sratoolkit.2.11.3-mac64.tar.gz
-tar -zxvf subread-2.0.3-macOS-x86_64.tar.gz
-```
-動作確認
-
 - Windows\
 Cygwinを利用する場合は、Trimmomaticの実行にJava、HISAT2の実行にPerlが必要です。それぞれインストールして下さい。
 - R & RStudio\
@@ -159,14 +144,8 @@ Trimmomaticを使って、アダプターの除去および低スコアな塩基
 アダプター配列を記載したFATSAファイルは[ここ](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/Truseq_stranded_totalRNA_adapter.fa)からダウンロード可能です。（今回は、illumina社のTruSeqシリーズの配列を記載しています。自前データで実行する際は、ライブラリー作製キットで使用している配列が記載されたFASTAファイルを用意して実行して下さい。）\
 下記はpaired-endでシーケンスしたFASTQファイルの場合です。
 ```
-java -jar ~/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 4 -phred33\
-./sample1_1_100K.fastq.gz\ #処理前Fowardリード
-./sample1_2_100K.fastq.gz\ #処理前Reverseリード
-./sample1_1_100K_trim_paired.fastq.gz\ #処理後ReverseリードとペアなFowardリード
-./sample1_1_100K_trim_unpaired.fastq.gz\ #処理後ReverseリードとペアでないFowardリード
-./sample1_2_100K_trim_paired.fastq.gz\ #処理後FowardリードとペアなReverseリード
-./sample1_2_100K_trim_unpaired.fastq.gz\ #処理後FowardリードとペアでないReverseリード
-ILLUMINACLIP:Truseq_stranded_totalRNA_adapter.fa:2:30:10 LEADING:20 TRAILING:20 SLIDINGWINDOW:4:20 MINLEN:25 #トリミング条件
+java -jar ~/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 4 -phred33 ./sample1_1_100K.fastq.gz ./sample1_2_100K.fastq.gz ./sample1_1_100K_trim_paired.fastq.gz 
+./sample1_1_100K_trim_unpaired.fastq.gz ./sample1_2_100K_trim_paired.fastq.gz ./sample1_2_100K_trim_unpaired.fastq.gz ILLUMINACLIP:Truseq_stranded_totalRNA_adapter.fa:2:30:10 LEADING:20 TRAILING:20 SLIDINGWINDOW:4:20 MINLEN:25
 ```
 - PE：レイアウトがpaired-endシーケンスのときに指定。single-endの場合はSEを指定します。
 - -threads：スレッド数（使用するPC環境に合わせて設定して下さい。）
