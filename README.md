@@ -276,13 +276,13 @@ cut -f1,7- sample_count.txt | grep -v ^\# > featureCounts_output.txt
 ここからは作業をRStudioに移します。\
 featureCountsの出力ファイルからカウントデータを抽出したファイルを読み込みます。６で出力したファイルはPBL用のスモールデータです。ある疾患の公共RNA-Seqデータ（３９サンプル）のカウント値を出力したファイル[```featureCounts_all_output.txt```](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/featureCounts_all_output.txt)を用意しましたので、こちらを読み込んで下さい。
 ```
-data <- read.table("~/featureCounts_all_output.txt", header = TRUE, row.names = 1, sep = "\t")
+data <- read.table("~/PBL/featureCounts_all_output.txt", header = TRUE, row.names = 1, sep = "\t")
 ```
 
 続いて、GTFファイルからgene lengthを抽出します。```featureCounts_all_output.txt```を出力した際に使用したGTFファイルのバージョンがGRCh38.101だったため、そのバージョンのGTFファイルを指定しています。バージョンが違うとエラーになります。
 ```
 library(GenomicFeatures)
-txdb <- makeTxDbFromGFF("~/Homo_sapiens.GRCh38.101.gtf", format = "gtf")
+txdb <- makeTxDbFromGFF("~/PBL/Homo_sapiens.GRCh38.101.gtf", format = "gtf")
 exons.list.per.gene <- exonsBy(txdb, by = 'gene', use.names = FALSE) #featureCountsでtranscriptレベルでカウントした場合は、by引数の'gene'を'tx'に、use.names引数をTRUEに変更します。
 exonic.gene.sizes <- lapply(exons.list.per.gene, function(x){sum(width(reduce(x)))})
 exonic.gene.sizes.2 <- as.numeric(exonic.gene.sizes)
@@ -293,7 +293,7 @@ exonic.gene.sizes.2$ensembl_gene_id <- row.names(exonic.gene.sizes.2)
 ```
 上記スクリプトの3行目は少し時間がかかるため、今回は下記の様に[事前に用意したファイル](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/exonic_gene_sizes_2_GRCh38.101.rds)を読み込んで使用して下さい。
 ```
-exonic.gene.sizes.2 <- readRDS("~/exonic_gene_sizes_2_GRCh38.101.rds")
+exonic.gene.sizes.2 <- readRDS("~/PBL/exonic_gene_sizes_2_GRCh38.101.rds")
 gene.len <- exonic.gene.sizes.2$as.matrix.exonic.gene.sizes.2.
 names(gene.len) <- exonic.gene.sizes.2$ensembl_gene_id
 gene.list.order <- row.names(data)
@@ -382,7 +382,7 @@ DEG2 <- merge(res.gene, DEG, by = "ensembl_gene_id")
 ```
 上記４、５行はbiomaRt側のサーバーが停止しているとエラーとなります。その場合は[事前に用意したRData](https://github.com/nojima-q/2021-12-13-15_PBL_analysis/raw/main/biomaRt_104.RData)を読み込んで使用して下さい。
 ```
-load(file = "~/biomaRt_104.RData")
+load(file = "~/PBL/biomaRt_104.RData")
 ```
 ### 9-1 GO解析
 GO解析では、Biological Process(BP)、Molecular Function(MF)、Cellular Component(CC)の３種類があります。\
