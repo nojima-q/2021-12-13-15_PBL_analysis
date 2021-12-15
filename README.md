@@ -149,8 +149,8 @@ java -jar ~/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 4 -phred33 ./sampl
 - PE：レイアウトがpaired-endシーケンスのときに指定。single-endの場合はSEを指定します。
 - -threads：スレッド数（使用するPC環境に合わせて設定して下さい。）
 - ILLUMINACLIP：Truseq_stranded_totalRNA_adapter.faはillumina社のTruSeqシリーズのアダプター配列をFASTA形式で記載してもの。後ろの数字は、許容ミスマッチ数:palindrome clip threshold:simple clip thresholdを表す。
-- LEADING：5'末端からスコアが 設定したスコア値未満の塩基をトリム
-- TRAILING：3'末端からスコアが 設定したスコア値未満の塩基をトリム
+- LEADING：5'末端から設定したスコア値未満の塩基をトリム
+- TRAILING：3'末端から設定したスコア値未満の塩基をトリム
 - SLIDINGWINDOW：左の数字はウィンドウサイズ、右の数字は平均クオリティ値を表します。ウィンドウサイズの範囲内の塩基のスコア平均が設定値よりも低ければ、3'末端側の全ての塩基をトリム。\
 - MINLEN：設定値未満の塩基数になったリードを除去する。
 
