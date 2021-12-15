@@ -217,7 +217,8 @@ Duplidate readsの含まれている数を示しています。
 - ftpサイトの『dna』をクリックすると複数のファイルが閲覧できます。このうち、『Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz』を使用します。
 - 次はアノテーションファイルをダウンロードします。
 - Humanトップページの『Gene annotation』内の『Download GTF』をクリック。
-- ftpサイトの『Homo_sapiens.GRCh38.104.gtf.gz』をダウンロードします。
+- ftpサイトの『Homo_sapiens.GRCh38.101.gtf.gz』をダウンロードします。
+- ※2021/12/15追記：バージョン104を使うとインデックス化でエラーで出るようです（恐らくEnsemblのファイルに問題あり）。バージョン101は問題ないことを確認していますので、本チュートリアルはバージョン101を使うことを前提にした内容に修正しました。
 
 ## 5 リファレンスゲノムへのマッピング
 ### 5-1 リファレンスゲノムファイルのインデックス化
@@ -226,12 +227,12 @@ Duplidate readsの含まれている数を示しています。
 今回は、HISAT2に含まれる```hisat2-build```を使用します。\
 インデックス化する前段階として、まずは下記を実行します。それぞれスプライシングサイト、エキソンサイトを抽出するpythonスクリプトです。
 ```
-~/hisat2-2.2.1/extract_splice_sites.py ./Homo_sapiens.GRCh38.104.gtf > ./Homo_sapiens.GRCh38.104.ss
-~/hisat2-2.2.1/extract_exons.py ./Homo_sapiens.GRCh38.104.gtf > ./Homo_sapiens.GRCh38.104.exon 
+~/hisat2-2.2.1/extract_splice_sites.py ./Homo_sapiens.GRCh38.101.gtf > ./Homo_sapiens.GRCh38.101.ss
+~/hisat2-2.2.1/extract_exons.py ./Homo_sapiens.GRCh38.101.gtf > ./Homo_sapiens.GRCh38.101.exon 
 ```
 上記の２ファイルも使って、インデックス化します。
 ```
-~/hisat2-2.2.1/hisat2-build -p 18 --ss ./Homo_sapiens.GRCh38.104.ss --exon ./Homo_sapiens.GRCh38.104.exon ./Homo_sapiens.GRCh38.dna.primary_assembly.fa ./GRCh38.104
+~/hisat2-2.2.1/hisat2-build -p 18 --ss ./Homo_sapiens.GRCh38.101.ss --exon ./Homo_sapiens.GRCh38.101.exon ./Homo_sapiens.GRCh38.dna.primary_assembly.fa ./GRCh38.104
 ```
 - -p：スレッド数（使用するPC環境に合わせて設定して下さい。）
 - -ss：extract_splice_sites.pyで作成したファイルを指定
@@ -240,7 +241,7 @@ Duplidate readsの含まれている数を示しています。
 ### 5-2 マッピング
 いよいよマッピングを行います。今回は時間短縮のため、１０万リードランダムサンプリングしたFASTQファイル（最初にダウンロードしたファイル）を5-1で作成したインデックス化したリファレンスゲノムにマッピングします。
 ```
-~/hisat2-2.1.0/hisat2 -p 40 --dta -x ./GRCh38.104 -1 ./sample1_1_100K_trim_paired.fastq.gz -2 ../sample1_2_100K_trim_paired.fastq.gz -S sample1_hisat2.sam 2> sample1_hisat2_log.txt
+~/hisat2-2.1.0/hisat2 -p 40 --dta -x ./GRCh38.101 -1 ./sample1_1_100K_trim_paired.fastq.gz -2 ../sample1_2_100K_trim_paired.fastq.gz -S sample1_hisat2.sam 2> sample1_hisat2_log.txt
 ```
 - -p：スレッド数（使用するPC環境に合わせて設定して下さい。）
 - --dta：アセンブラーなど下流の解析ツールを使用する際のオプション。またメモリ使用量を改善する。
@@ -256,7 +257,7 @@ Duplidate readsの含まれている数を示しています。
 マッピング結果であるSAMファイルからgeneごとまたはtranscriptごとにリードのカウント数を出力します。\
 カウントデータの出力には[Subread package](http://subread.sourceforge.net/)に含まれる```featureCounts```というプログラムを使用します。
 ```
-~/subread-2.0.1-MacOS-x86_64/bin/featureCounts -O -M -T 18 -p -t exon -g gene_id -a ./Homo_sapiens.GRCh38.104.gtf -o sample_count.txt sample*_hisat2.sam
+~/subread-2.0.1-MacOS-x86_64/bin/featureCounts -O -M -T 18 -p -t exon -g gene_id -a ./Homo_sapiens.GRCh38.101.gtf -o sample_count.txt sample*_hisat2.sam
 ```
 - -O：複数のfeatureで定義されている特定のゲノム領域にマッピングされたリードもカウントする
 - -M：マルチマッピングされたリードもカウントする
