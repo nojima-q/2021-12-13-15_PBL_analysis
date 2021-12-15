@@ -232,7 +232,7 @@ Duplidate readsの含まれている数を示しています。
 ```
 上記の２ファイルも使って、インデックス化します。
 ```
-~/hisat2-2.2.1/hisat2-build -p 18 --ss ./Homo_sapiens.GRCh38.101.ss --exon ./Homo_sapiens.GRCh38.101.exon ./Homo_sapiens.GRCh38.dna.primary_assembly.fa ./GRCh38.104
+~/hisat2-2.2.1/hisat2-build -p 18 --ss ./Homo_sapiens.GRCh38.101.ss --exon ./Homo_sapiens.GRCh38.101.exon ./Homo_sapiens.GRCh38.dna.primary_assembly.fa ./GRCh38.101
 ```
 - -p：スレッド数（使用するPC環境に合わせて設定して下さい。）
 - -ss：extract_splice_sites.pyで作成したファイルを指定
