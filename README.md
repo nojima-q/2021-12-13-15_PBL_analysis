@@ -56,11 +56,11 @@ SRR_Acc_List.txtの内容\
 
 SRA Toolkitの```prefetch```、```fastq-dump```を使ってデータを取得する。まず、```prefetch```でsraファイルがダウンロードされる。１つのsraファイルが20GBを超える場合は、-Xまたは--max-size 50Gなどのように最大数を変更する。--option-fileは使わずに直接Accession numberを入力して個別にダウンロードすることも可能です。
 ```
-$ prefetch  --option-file ~/Downloads/SRR_Acc_list.txt
+prefetch  --option-file ~/Downloads/SRR_Acc_list.txt
 ```
 次に```fastq-dump```でsraファイルからfastqファイルを取得する。```PATH```にfastqファイルを格納したいディレクトリのパスを記載。\
 ```
-$ find . -name '*.sra' -exec fastq-dump --gzip --split-files --outdir ./PATH {} \;
+find . -name '*.sra' -exec fastq-dump --gzip --split-files --outdir ./PATH {} \;
 ```
 - --gzip：圧縮ファイルとして出力する
 - --split-files：レイアウトがpaired-endの際に指定する。single-endのときは不要。
